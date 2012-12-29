@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121229121939) do
+ActiveRecord::Schema.define(:version => 20121229161418) do
+
+  create_table "pesees", :force => true do |t|
+    t.date     "quand"
+    t.integer  "what"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "profiles", :force => true do |t|
     t.integer  "age"

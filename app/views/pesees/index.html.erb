@@ -1,0 +1,26 @@
+<h1>Listing pesees</h1>
+
+<table>
+  <tr>
+    <th>When</th>
+    <th>What</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pesees.each do |pesee| %>
+  <tr>
+    <td><%= pesee.quand %></td>
+    <td><%= pesee.what %></td>
+    <td><%= pesee.user_id %></td>
+    <td><%= link_to 'Show', user_pesee_path(pesee.user.id,pesee) %></td>
+    <td><%= link_to 'Edit', edit_user_pesee_path(pesee.user.id,pesee.id) %></td>
+    <td><%= link_to 'Destroy', user_pesee_path(pesee.user.id,pesee), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

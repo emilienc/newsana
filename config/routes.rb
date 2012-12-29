@@ -1,7 +1,6 @@
 Newsana::Application.routes.draw do
   
 
-  resources :profiles
 
 
  authenticated :user do
@@ -11,7 +10,11 @@ Newsana::Application.routes.draw do
   root :to => "home#index"
 
   devise_for :users
-  resources :users
+  
+  resources :users do
+    resources :pesees
+    resources :profiles
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
