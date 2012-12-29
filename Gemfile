@@ -14,20 +14,27 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'devise'
+gem 'cancan'
+gem 'rolify'
+gem 'simple_form'
+gem 'figaro'
 
 group :test do
  gem 'cucumber-rails'
  gem 'database_cleaner'
  gem 'email_spec'
  gem 'capybara'
+ gem 'launchy'
 end
 
 group :test,:development do
  gem 'rspec-rails'
  gem 'factory_girl_rails'
- gem 'launchy'
- gem 'devise'
+ gem 'quiet_assets' 
+ gem 'better_errors'
  gem 'spork'
+ gem 'binding_of_caller'
 end
 
 
