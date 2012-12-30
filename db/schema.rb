@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121229161418) do
+ActiveRecord::Schema.define(:version => 20121230135743) do
 
   create_table "pesees", :force => true do |t|
     t.date     "quand"
@@ -22,10 +22,11 @@ ActiveRecord::Schema.define(:version => 20121229161418) do
   end
 
   create_table "profiles", :force => true do |t|
-    t.integer  "age"
+    t.date     "birthday"
     t.integer  "user_id"
-    t.integer  "poids"
+    t.string   "image_url"
     t.integer  "taille"
+    t.string   "gender"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -55,6 +56,8 @@ ActiveRecord::Schema.define(:version => 20121229161418) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

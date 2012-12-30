@@ -1,19 +1,17 @@
 Newsana::Application.routes.draw do
   
-
-
-
+ 
  authenticated :user do
    root :to => 'home#index'
  end
 
   root :to => "home#index"
 
-  devise_for :users
+  devise_for :users , :controllers => { :registrations => "registrations", :omniauth_callbacks => "omniauth_callbacks"  }
+
   
   resources :users do
-    resources :pesees
-    resources :profiles
+    resources :pesees, :profiles
   end
 
   # The priority is based upon order of creation:

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   #Rails index method is provided by default
 
+
   def show
     @user = User.find(params[:id])
   end

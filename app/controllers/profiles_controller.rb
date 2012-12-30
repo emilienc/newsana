@@ -24,7 +24,9 @@ class ProfilesController < ApplicationController
   # GET /profiles/new
   # GET /profiles/new.json
   def new
-    @profile = Profile.new
+    @user = User.find(params[:user_id])
+    @user.build_profile if @user.profile.nil?
+    @profile = @user.profile
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,21 +36,24 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
-    @profile = Profile.find(params[:id])
+    @user = User.find(params[:user_id])
+    @user.build_profile if @user.profile.nil?
+    @profile = @user.profile
   end
 
   # POST /profiles
   # POST /profiles.json
   def create
-    @profile = Profile.new(params[:profile])
+    @user = User.find(params[:user_id])
+    @user.build_profile(params[:id])
 
     respond_to do |format|
-      if @profile.save
-        format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
-        format.json { render json: @profile, status: :created, location: @profile }
+      if @user.profile.save
+        format.html { redirect_to user_path(@user.id), notice: 'Profile was successfully created.' }
+        format.json { render json: @user.profile, status: :created, location: @user.profile }
       else
         format.html { render action: "new" }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+        format.json { render json: @user.profile.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,15 +61,16 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1
   # PUT /profiles/1.json
   def update
-    @profile = Profile.find(params[:id])
+    @user = User.find(params[:user_id])
+    @user.profile = Profile.find(params[:id])
 
     respond_to do |format|
-      if @profile.update_attributes(params[:profile])
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+      if @user.profile.update_attributes(params[:profile])
+        format.html { redirect_to user_path(@user.id), notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+        format.json { render json: @user.profile.errors, status: :unprocessable_entity }
       end
     end
   end

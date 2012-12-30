@@ -1,5 +1,12 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
-  <p><%=link_to 'Pesee', new_user_pesee_path(user) %></p>
-<% end %>
+<div class="center hero-unit">
+  <h1>Welcome to the FREE Health App</h1>
+
+  <h2>
+    You want to track your weight, food and activities in order to stay in good shape
+    and you like social inter-actions , joins us it's definitely free
+  </h2>
+
+  <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-large btn-primary" %>
+</div>
+
+<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>

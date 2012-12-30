@@ -1,3 +1,23 @@
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<div class='row'>
+    <div class="span4 well">
+    	<div class="row">
+    		<div class="span1"><%=image_tag @user.image%></div>
+    		<div class="span3">
+    			<p><%=@user.name%></p>
+                <% unless @user.pesees.count ==0 %>
+                <p><%=@user.pesees.last.what %> kg pour <%=@user.taille%> cm</p>
+                <%end%>
+    			<p><strong><%=@user.email%></strong></p>
+    			<span class=" badge badge-warning">8 messages</span> <span class=" badge badge-info">15 followers</span>
+                <% if @user.profile.nil? %>
+                 <%= link_to("Creer",new_user_profile_path(@user)) %>
+                <% else %>
+                <%= link_to("Modifier",edit_user_profile_path(@user,@user.profile)) %>
+                <%end%>
+    		</div>
+    	</div>
+    </div>
+    <br>
+    <div class="span2"><br></div>
+</div>
 

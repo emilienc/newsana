@@ -19,6 +19,8 @@ gem 'cancan'
 gem 'rolify'
 gem 'simple_form'
 gem 'figaro'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :test do
  gem 'cucumber-rails'
@@ -32,9 +34,13 @@ group :test,:development do
  gem 'rspec-rails'
  gem 'factory_girl_rails'
  gem 'quiet_assets' 
- gem 'better_errors'
+
  gem 'spork'
  gem 'binding_of_caller'
+end
+
+group :development do
+ gem 'better_errors'
 end
 
 

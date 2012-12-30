@@ -1,11 +1,11 @@
 class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
-      t.integer :age
+      t.date :birthday
       t.integer :user_id
-      t.integer :poids
+      t.string :image_url
       t.integer :taille
-
+      t.string :gender
       t.timestamps
     end
   end

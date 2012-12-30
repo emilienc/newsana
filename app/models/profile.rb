@@ -1,4 +1,4 @@
 class Profile < ActiveRecord::Base
-  attr_accessible :age, :poids, :taille, :user_id
+  attr_accessible :birthday, :gender, :taille, :user_id, :image_url
   belongs_to :user
 end

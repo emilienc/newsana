@@ -14,8 +14,7 @@ Feature: Sign in
         And I am not logged in
       When I sign in with valid credentials
       Then I see a successful sign in message
-      When I return to the site
-      Then I should be signed in
+      Then I should see my name
 
     Scenario: User enters wrong email
       Given I exist as a user
