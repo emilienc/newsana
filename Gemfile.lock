@@ -151,6 +151,7 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
+    redis (3.0.2)
     rolify (3.2.0)
     rspec-core (2.12.2)
     rspec-expectations (2.12.1)
@@ -221,6 +222,7 @@ DEPENDENCIES
   omniauth-facebook
   quiet_assets
   rails (= 3.2.9)
+  redis
   rolify
   rspec-rails
   sass-rails (~> 3.2.3)

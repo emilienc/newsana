@@ -1,5 +1,5 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
-en:
-  hello: "Hello world"
+en: 
+ home:
+  welcome: "Welcome to the FREE Health App"
+  description: "You want to track your weight, food and activities in order to stay in good shape and you like social interactions , joins us it's definitely free"
+  signup: 'Sign up now!'

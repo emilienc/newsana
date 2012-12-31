@@ -1,7 +1,7 @@
 Feature: Create Pesee
   In order to stay in good shape
   As a user
-  I want to register my weight
+  I want to follow my weight
 
 
     Scenario: User create a valid pesee
