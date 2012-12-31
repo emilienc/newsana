@@ -36,8 +36,8 @@ class User < ActiveRecord::Base
     else
       @profile = user.profile
     end
-    #@profile.name = auth.extra.raw_info.name
     @profile.image_url = auth.info.image
+    @profile.gender =auth.info.gender
     @profile.save
 
   end

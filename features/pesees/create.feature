@@ -8,3 +8,8 @@ Feature: Create Pesee
       Given I am logged in
       When I enter a pesee with valid pesee data
       Then I should see a successful pesee create message
+
+     Scenario: User manages his pesees
+      Given I am logged in
+      When I go to see all my pesees
+      Then I should see a table with my pesee

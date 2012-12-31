@@ -1,26 +1,24 @@
-<h1>Listing pesees</h1>
+<h1>Liste des pesees</h1>
 
-<table>
+<table class="table table-striped">
+  <thead>
   <tr>
-    <th>When</th>
-    <th>What</th>
-    <th>User</th>
+    <th>Date</th>
+    <th>Poids</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
 <% @pesees.each do |pesee| %>
   <tr>
     <td><%= pesee.quand %></td>
-    <td><%= pesee.what %></td>
-    <td><%= pesee.user_id %></td>
-    <td><%= link_to 'Show', user_pesee_path(pesee.user.id,pesee) %></td>
-    <td><%= link_to 'Edit', edit_user_pesee_path(pesee.user.id,pesee.id) %></td>
-    <td><%= link_to 'Destroy', user_pesee_path(pesee.user.id,pesee), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= pesee.what %> kg</td>
+    <td><%= link_to 'Modifier', edit_user_pesee_path(pesee.user.id,pesee.id) %></td>
+    <td><%= link_to 'Supprimer', user_pesee_path(pesee.user.id,pesee), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
-
-<br />
 
