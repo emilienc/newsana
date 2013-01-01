@@ -1,4 +1,9 @@
-en: 
+en:
+ imc:
+  surpoids: 'too big'
+  normal: 'standard'
+ nav:
+  home: 'Home'
  home:
   welcome: "Welcome to the FREE Health App"
   description: "You want to track your weight, food and activities in order to stay in good shape and you like social interactions , joins us it's definitely free"

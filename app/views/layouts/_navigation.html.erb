@@ -1,5 +1,5 @@
 
-<%= link_to 'home', user_signed_in? ? user_path(current_user) : root_path , :class => 'brand' %>
+<%= link_to t('nav.home'), user_signed_in? ? user_path(current_user) : root_path , :class => 'brand' %>
 
 <ul class="nav">
   <% if user_signed_in? %>
@@ -7,12 +7,12 @@
     <li class = "dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Gerer mes infos<b class="caret"></b></a>  
          <ul class="dropdown-menu">  
-           <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+           <li><%= link_to 'Gérer mon compte', edit_user_registration_path %></li>
            <li class="divider"></li>  
             <% if current_user.profile.nil? %>
-                <li><%= link_to 'Create profile', new_user_profile_path(current_user.id) %></li>
+                <li><%= link_to 'Créer mon profil', new_user_profile_path(current_user.id) %></li>
             <%else%>
-                <li><%= link_to 'Edit profile', edit_user_profile_path(current_user.id,current_user.profile.id) %></li>
+                <li><%= link_to 'Editer mon profil', edit_user_profile_path(current_user.id,current_user.profile.id) %></li>
             <%end%>
            
          </ul>  
@@ -20,8 +20,22 @@
     <li class = "dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Gerer mon Poids<b class="caret"></b></a>  
          <ul class="dropdown-menu">  
-            <li><%= link_to 'Add Pesee', new_user_pesee_path(current_user) %></li>      
+            <li><%= link_to 'Ajouter une pesée', new_user_pesee_path(current_user) %></li>      
             <li><%= link_to 'Voir mes pesées', user_pesees_path(current_user) %></li>    
+         </ul>  
+    </li>  
+     <li class = "dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Gerer mes repas<b class="caret"></b></a>  
+         <ul class="dropdown-menu">  
+            <li><%= link_to 'Ajouter un repas', new_user_repa_path(current_user) %></li>      
+            <li><%= link_to 'Voir mes repas', user_repas_path(current_user) %></li>    
+         </ul>  
+    </li>  
+     <li class = "dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Gerer mes activités<b class="caret"></b></a>  
+         <ul class="dropdown-menu">  
+            <li><%= link_to 'Ajouter une activité', new_user_pesee_path(current_user) %></li>      
+            <li><%= link_to 'Voir mes activités', user_pesees_path(current_user) %></li>    
          </ul>  
     </li>  
   <% else %>

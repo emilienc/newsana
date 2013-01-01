@@ -28,12 +28,13 @@
                   <p><%=@user.pesees.last.what %> kg pour <%=@user.taille%> cm</p>
                 <%end%>
     			       <p><strong><%=@user.email%></strong></p>
+                 <% unless @user.profile.nil? || @user.profile.uncomplete? %>
+                 <p><strong>IMC : <%=Doctor.imc(@user)%> (<%=Doctor.avis_imc(@user)%>)</strong></p>
+                 <p><strong>IMG : <%=Doctor.img(@user)%> % (<%=Doctor.avis_img(@user)%>)</strong></p>
+                 <p><strong>Poids ideal : <%=Doctor.poids_ideal(@user)%> kg</strong></p>
+                 <p><strong>Metabolisme : <%=Doctor.metabolisme(@user)%> kcal</strong></p>
+                 <%end%>
     			       <span class=" badge badge-warning">8 messages</span> <span class=" badge badge-info">15 followers</span>
-                <% if @user.profile.nil? %>
-                  <%= link_to("Creer",new_user_profile_path(@user)) %>
-                <% else %>
-                  <%= link_to("Modifier",edit_user_profile_path(@user,@user.profile)) %>
-                <%end%>
     		    </div>
     	   </div>
       </div>

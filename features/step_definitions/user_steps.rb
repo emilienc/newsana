@@ -1,3 +1,4 @@
+# encoding: UTF-8
 ### UTILITY METHODS ###
 
 def create_visitor
@@ -19,7 +20,7 @@ end
 def create_user
   create_visitor
   delete_user
-  @user = FactoryGirl.create(:user, email: @visitor[:email])
+  @user = FactoryGirl.create(:user, email: @visitor[:email] )
 end
 
 def delete_user
@@ -122,7 +123,7 @@ When /^I sign in with a wrong password$/ do
 end
 
 When /^I edit my account details$/ do
-  click_link "Edit account"
+  click_link "Gérer mon compte"
   fill_in "user_name", :with => "newname"
   fill_in "user_current_password", :with => @visitor[:password]
   click_button "Update"
@@ -188,4 +189,9 @@ end
 Then /^I should see my name$/ do
   create_user
   page.should have_content @user[:name]
+end
+
+Then /^I should see my IMC$/ do
+  create_user
+  page.should have_content Doctor.imc(@user)
 end

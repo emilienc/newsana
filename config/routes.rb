@@ -1,6 +1,7 @@
-Newsana::Application.routes.draw do
-  
+Newsana::Application.routes.draw do  
+
 scope "(:locale)", :locale => /en|fr/ do
+ 
  authenticated :user do
    root :to => 'home#index'
  end
@@ -11,8 +12,10 @@ scope "(:locale)", :locale => /en|fr/ do
 
   
   resources :users do
-    resources :pesees, :profiles
+    resources :pesees, :profiles,:repas
   end
+
+  resources :aliments
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

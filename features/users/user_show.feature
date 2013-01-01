@@ -7,3 +7,4 @@ Feature: Show Users
       Given I exist as a user
       When I sign in with valid credentials
       Then I should see my name
+      Then I should see my IMC

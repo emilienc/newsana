@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :profile do
-    age 1
+    birthday "18/05/1968"
     user_id 1
-    poids 1
-    taille 1
+    taille 185
+    gender :male
   end
 end

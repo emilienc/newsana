@@ -1,4 +1,9 @@
-fr: 
+fr:
+ imc:
+  surpoids: 'surpoids'
+  normal: 'normal'
+ nav:
+  home: 'Accueil'
  home:
   welcome: "Bienvenue sur le site qui maintient en forme"
   description: "Vous voulez suivre votre poids, votre alimentation et vos activites pour rester en forme en relation avec vos amis , rejoignez nous c'est gratuit"

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @aliment.name %>
+</p>
+
+<p>
+  <b>Calories:</b>
+  <%= @aliment.calories %>
+</p>
+
+<p>
+  <b>Proteines:</b>
+  <%= @aliment.proteines %>
+</p>
+
+<p>
+  <b>Glucides:</b>
+  <%= @aliment.glucides %>
+</p>
+
+<p>
+  <b>Lipides:</b>
+  <%= @aliment.lipides %>
+</p>
+
+<p>
+  <b>Quantite:</b>
+  <%= @aliment.quantite %>
+</p>
+
+<p>
+  <b>Unite:</b>
+  <%= @aliment.unite %>
+</p>
+
+
+<%= link_to 'Edit', edit_aliment_path(@aliment) %> |
+<%= link_to 'Back', aliments_path %>

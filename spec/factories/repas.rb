@@ -1,9 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :pesee do
-    quand "2012-12-29"
-    what 100
+  factory :repa do
     user_id 1
+    quand "2013-01-01"
+    type ""
   end
 end

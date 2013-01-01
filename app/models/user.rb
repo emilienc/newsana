@@ -1,6 +1,8 @@
+# encoding: UTF-8
 class User < ActiveRecord::Base
   has_one :profile, :dependent => :destroy
   has_many :pesees, :dependent => :destroy
+  has_many :repas, :dependent => :destroy
   rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -12,32 +14,38 @@ class User < ActiveRecord::Base
   attr_accessible :role_ids, :as => :admin
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :profile_attributes, :provider, :uid
   # attr_accessible :title, :body
-  accepts_nested_attributes_for :profile, :pesees
+  accepts_nested_attributes_for :profile, :pesees, :repas
 
-  def image
-    if profile.nil?
-      nil
-    else
-      profile.image_url
+  def poids
+    @poids = 0
+    @poids = pesees.last.what unless pesees.last.nil?
+    @poids
+  end
+
+  def age
+    age=0
+    unless profile.nil? || profile.birthday.nil?
+      age = Date.today.year - profile.birthday.year
+      age -= 1 if Date.today < profile.birthday + age.years #for days before birthday
     end
+    age
+  end
+  
+  def image
+      profile.image_url unless profile.nil?
   end
 
   def taille
-    if profile.nil?
-      0
-    else
-      profile.taille
-    end
+      @taille = 0
+      @taille = profile.taille unless profile.nil?
+      @taille
   end
 
    def self.set_profile(user,auth)
-    if user.profile.nil?
-      @profile = user.build_profile
-    else
-      @profile = user.profile
-    end
-    @profile.image_url = auth.info.image
-    @profile.gender =auth.info.gender
+    @profile = user.profile || user.build_profile
+    @profile.image_url = auth.info.image unless auth.info.image.nil?
+    @profile.gender = auth.info.gender unless auth.info.gender.nil?
+    @profile.birthday = auth.extra.raw_info.birthday unless auth.extra.raw_info.birthday.nil?
     @profile.save
 
   end
@@ -65,11 +73,5 @@ class User < ActiveRecord::Base
       end
     end
   end
-
-  #def profile
-  #  super || build_profile
-  #end
-
-
 
 end

@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230135743) do
+ActiveRecord::Schema.define(:version => 20130101145256) do
+
+  create_table "aliments", :force => true do |t|
+    t.string   "name"
+    t.integer  "calories"
+    t.integer  "proteines"
+    t.integer  "glucides"
+    t.integer  "lipides"
+    t.integer  "quantite"
+    t.string   "unite"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "aliments_repas", :id => false, :force => true do |t|
+    t.integer "aliment_id"
+    t.integer "repa_id"
+  end
+
+  add_index "aliments_repas", ["aliment_id", "repa_id"], :name => "index_aliments_repas_on_aliment_id_and_repa_id"
+  add_index "aliments_repas", ["repa_id", "aliment_id"], :name => "index_aliments_repas_on_repa_id_and_aliment_id"
 
   create_table "pesees", :force => true do |t|
     t.date     "quand"
@@ -27,6 +47,14 @@ ActiveRecord::Schema.define(:version => 20121230135743) do
     t.string   "image_url"
     t.integer  "taille"
     t.string   "gender"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "repas", :force => true do |t|
+    t.integer  "user_id"
+    t.date     "quand"
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
