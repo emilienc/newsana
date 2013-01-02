@@ -1,5 +1,8 @@
 Newsana::Application.routes.draw do  
 
+  resources :activites
+
+
 scope "(:locale)", :locale => /en|fr/ do
 
   resources :unites

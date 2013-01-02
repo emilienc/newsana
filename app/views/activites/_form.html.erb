@@ -1,0 +1,14 @@
+<%= simple_form_for(@activite) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  	<%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.input :category_activite_id, :collection => CategoryActivite.all, prompt:  'Choose the category' %>
+    <%= f.input :duree, label: "Durée en minutes" %>
+    <%= f.input :quand %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

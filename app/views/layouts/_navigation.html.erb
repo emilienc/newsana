@@ -34,18 +34,10 @@
     <li class = "dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Gerer mes activités<b class="caret"></b></a>  
          <ul class="dropdown-menu">  
-            <li><%= link_to 'Ajouter une activité', '#' %></li>      
-            <li><%= link_to 'Voir mes activités', '#' %></li>    
+            <li><%= link_to 'Ajouter une activité', new_activite_path %></li>      
+            <li><%= link_to 'Voir mes activités', activites_path %></li>    
          </ul>  
     </li>
-   
-    <li class = "dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administrer le site<b class="caret"></b></a>  
-         <ul class="dropdown-menu">  
-            <li><%= link_to 'Gérer les unites', unites_path %></li>      
-            <li><%= link_to 'Gérer les aliments', aliments_path %></li>    
-         </ul>  
-    </li>  
     
   <% else %>
   <li class = "dropdown">

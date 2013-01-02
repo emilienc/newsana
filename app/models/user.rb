@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_one :profile, :dependent => :destroy
   has_many :pesees, :dependent => :destroy
   has_many :repas, :dependent => :destroy
+    has_many :activites, :dependent => :destroy
  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

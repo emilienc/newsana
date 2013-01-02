@@ -1,0 +1,28 @@
+<h1>Listing activites</h1>
+
+<table>
+  <tr>
+    <th>Category activite</th>
+    <th>Duree</th>
+    <th>When</th>
+    <th>Calories</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @activites.each do |activite| %>
+  <tr>
+    <td><%= activite.category_activite_id %></td>
+    <td><%= activite.duree %></td>
+    <td><%= activite.quand %></td>
+    <td><%= activite.calories %></td>
+    <td><%= link_to 'Show', activite %></td>
+    <td><%= link_to 'Edit', edit_activite_path(activite) %></td>
+    <td><%= link_to 'Destroy', activite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Activite', new_activite_path %>

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -16,3 +17,7 @@ user = User.find_or_create_by_email :admin => true,:name => ENV['ADMIN_NAME'].du
 puts 'UNITE'
 unite1 = Unite.create({ :name => 'gramme' })
 unite2 = Unite.create({ :name => 'litre' })
+puts 'CATEGORY_ACTIVITE'
+CategoryActivite.create({ :name => 'vélo', :MET=>8.0 })
+CategoryActivite.create({ :name => 'marche' , :MET=>4.0})
+CategoryActivite.create({ :name => 'course à pied', :MET=>7.0 })
