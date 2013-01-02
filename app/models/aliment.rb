@@ -1,3 +1,3 @@
 class Aliment < ActiveRecord::Base
-  attr_accessible :calories, :name, :unite_id
+  attr_accessible :calories, :name, :portion, :unite_id
 end

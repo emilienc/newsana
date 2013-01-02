@@ -2,8 +2,8 @@ class RepasController < ApplicationController
   # GET /repas
   # GET /repas.json
   def index
-    @user = User.find(params[:user_id])
-    @repas = @user.repas
+    
+    @repas = current_user.repas
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,9 +25,9 @@ class RepasController < ApplicationController
   # GET /repas/new
   # GET /repas/new.json
   def new
-    @user = User.find(params[:user_id])
-    @repa = @user.repas.build
-    
+   
+    @repa = Repa.new
+    @ingredient = @repa.ingredients.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,20 +37,18 @@ class RepasController < ApplicationController
 
   # GET /repas/1/edit
   def edit
-    @user = User.find(params[:user_id])
     @repa = Repa.find(params[:id])
   end
 
   # POST /repas
   # POST /repas.json
   def create
-    @user = User.find(params[:user_id])
-    @repa = @user.repas.build(params[:repa])
+    @repa = Repa.new(params[:repa])
 
     respond_to do |format|
       if @repa.save
-        format.html { redirect_to @user, notice: 'Repa was successfully created.' }
-        format.json { render json: @user, status: :created, location: @repa }
+        format.html { redirect_to @repa, notice: 'Repa was successfully created.' }
+        format.json { render json: @repa, status: :created, location: @repa }
       else
         format.html { render action: "new" }
         format.json { render json: @repa.errors, status: :unprocessable_entity }

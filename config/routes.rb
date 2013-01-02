@@ -12,6 +12,8 @@ scope "(:locale)", :locale => /en|fr/ do
 
   resources :ingredients
 
+  resources :repas
+
 
 
  
@@ -26,7 +28,7 @@ scope "(:locale)", :locale => /en|fr/ do
   ActiveAdmin.routes(self)
   
   resources :users do
-    resources :pesees, :profiles,:repas
+    resources :pesees, :profiles
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
