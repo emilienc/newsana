@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 gem 'sqlite3'
-gem 'redis'
+#gem 'redis'
 
 
 # Gems used only for assets and not required
@@ -16,8 +16,10 @@ end
 
 gem 'jquery-rails'
 gem 'devise'
-gem 'cancan'
-gem 'rolify'
+gem 'activeadmin'
+gem 'meta_search'
+#gem 'cancan'
+#gem 'rolify'
 gem 'simple_form'
 gem 'figaro'
 gem 'omniauth'
@@ -29,13 +31,13 @@ group :test do
  gem 'email_spec'
  gem 'capybara'
  gem 'launchy'
+ gem "cucumber-rails-training-wheels"
 end
 
 group :test,:development do
  gem 'rspec-rails'
  gem 'factory_girl_rails'
  gem 'quiet_assets' 
-
  gem 'spork'
  gem 'binding_of_caller'
 end

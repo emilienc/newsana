@@ -11,27 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130101145256) do
+ActiveRecord::Schema.define(:version => 20130102122905) do
+
+  create_table "active_admin_comments", :force => true do |t|
+    t.string   "resource_id",   :null => false
+    t.string   "resource_type", :null => false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.text     "body"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "namespace"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "aliments", :force => true do |t|
     t.string   "name"
     t.integer  "calories"
-    t.integer  "proteines"
-    t.integer  "glucides"
-    t.integer  "lipides"
-    t.integer  "quantite"
-    t.string   "unite"
+    t.integer  "unite_id"
+    t.integer  "portion"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "aliments_repas", :id => false, :force => true do |t|
-    t.integer "aliment_id"
-    t.integer "repa_id"
+  create_table "ingredients", :force => true do |t|
+    t.integer  "aliment_id"
+    t.integer  "quantite"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "aliments_repas", ["aliment_id", "repa_id"], :name => "index_aliments_repas_on_aliment_id_and_repa_id"
-  add_index "aliments_repas", ["repa_id", "aliment_id"], :name => "index_aliments_repas_on_repa_id_and_aliment_id"
 
   create_table "pesees", :force => true do |t|
     t.date     "quand"
@@ -59,16 +70,11 @@ ActiveRecord::Schema.define(:version => 20130101145256) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "roles", :force => true do |t|
+  create_table "unites", :force => true do |t|
     t.string   "name"
-    t.integer  "resource_id"
-    t.string   "resource_type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
-  add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -81,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20130101145256) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "admin"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
@@ -90,12 +97,5 @@ ActiveRecord::Schema.define(:version => 20130101145256) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "users_roles", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "role_id"
-  end
-
-  add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
 
 end

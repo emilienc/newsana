@@ -11,5 +11,5 @@ Feature: Create Pesee
 
      Scenario: User manages his pesees
       Given I am logged in
-      When I go to see all my pesees
+      When I want to see all my pesees
       Then I should see a table with my pesee

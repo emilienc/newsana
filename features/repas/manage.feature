@@ -11,5 +11,10 @@ Feature: Create Repas
 
      Scenario: User manages his repas
       Given I am logged in
-      When I go to see all my repas
+      When I want to see all my repas
       Then I should see a table with my repas
+
+    Scenario: User inserts aliments
+      Given I am logged in
+      When  I create a repas with aliments
+      Then I should see a successful repas create message      

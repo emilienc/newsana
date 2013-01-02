@@ -6,6 +6,10 @@ def create_visitor
     :password => "please", :password_confirmation => "please" }
 end
 
+def find_admin
+  @visitor = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
+end
+
 def find_user
   @user ||= User.where(:email => @visitor[:email]).first
 end

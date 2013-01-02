@@ -1,6 +1,19 @@
 Newsana::Application.routes.draw do  
 
 scope "(:locale)", :locale => /en|fr/ do
+
+  
+
+  resources :unites
+
+
+  resources :aliments
+
+
+  resources :ingredients
+
+
+
  
  authenticated :user do
    root :to => 'home#index'
@@ -9,14 +22,12 @@ scope "(:locale)", :locale => /en|fr/ do
   root :to => "home#index"
 
   devise_for :users , :controllers => { :registrations => "registrations", :omniauth_callbacks => "omniauth_callbacks"  }
-
+  
+  ActiveAdmin.routes(self)
   
   resources :users do
     resources :pesees, :profiles,:repas
   end
-
-  resources :aliments
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -4,10 +4,6 @@ FactoryGirl.define do
   factory :aliment do
     name "MyString"
     calories 1
-    proteines 1
-    glucides 1
-    lipides 1
-    quantite 1
-    unite "MyString"
+    unite_id 1
   end
 end

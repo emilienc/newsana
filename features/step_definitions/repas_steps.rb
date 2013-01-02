@@ -11,10 +11,14 @@ Then /^I should see a successful repas create message$/ do
   page.should have_content "Repa was successfully created."
 end
 
-When /^I go to see all my repas$/ do
+When /^I want to see all my repas$/ do
   click_link "Voir mes repas"
 end
 
 Then /^I should see a table with my repas$/ do
   page.should have_content "Liste des repas"
+end
+
+When /^I create a repas with aliments$/ do
+  pending # express the regexp above with the code you wish you had
 end

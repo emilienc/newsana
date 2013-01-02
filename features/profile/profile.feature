@@ -13,4 +13,18 @@ Feature: Create and Update Profile
       When I update my profile
       Then I should see a profile updated message
       Then I should have a link to edit my profile
-      
+
+    Scenario: User updates facebook profile
+      Given I am not logged in
+      When I Sign in with Facebook
+      Then I should see a successful facebook sign up message
+      When I update my profile
+      Then I should see a profile updated message
+      When I enter a pesee with valid pesee data
+      Then I should see a successful pesee create message
+      Then I should see my IMC
+      When I sign out
+      Then I should see a signed out message
+      When I sign in with valid credentials
+      Then I see a successful sign in message
+      Then I should see my IMC

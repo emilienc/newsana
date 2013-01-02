@@ -3,12 +3,8 @@ class CreateAliments < ActiveRecord::Migration
     create_table :aliments do |t|
       t.string :name
       t.integer :calories
-      t.integer :proteines
-      t.integer :glucides
-      t.integer :lipides
-      t.integer :quantite
-      t.string :unite
-
+      t.integer :unite_id
+      t.integer :portion
       t.timestamps
     end
   end

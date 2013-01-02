@@ -10,6 +10,24 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+    when /the new aliment page/
+      new_aliment_path
+
+      when /edit page for that aliment/
+        raise 'no aliment' unless @aliment
+        edit_aliment_path(@aliment)
+      when /page for that aliment/
+        raise 'no aliment' unless @aliment
+        aliment_path(@aliment)
+      when /edit page for the (\d+)(?:st|nd|rd|th) aliment/
+        raise 'no aliments' unless @aliments
+        nth_aliment = @aliments[$1.to_i - 1]
+        edit_aliment_path(nth_aliment)
+      when /page for the (\d+)(?:st|nd|rd|th) aliment/
+        raise 'no aliments' unless @aliments
+        nth_aliment = @aliments[$1.to_i - 1]
+        aliment_path(nth_aliment)
+
 
     when /the sign up page/
       '/users/sign_up'

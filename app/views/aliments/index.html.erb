@@ -4,10 +4,6 @@
   <tr>
     <th>Name</th>
     <th>Calories</th>
-    <th>Proteines</th>
-    <th>Glucides</th>
-    <th>Lipides</th>
-    <th>Quantite</th>
     <th>Unite</th>
     <th></th>
     <th></th>
@@ -18,11 +14,7 @@
   <tr>
     <td><%= aliment.name %></td>
     <td><%= aliment.calories %></td>
-    <td><%= aliment.proteines %></td>
-    <td><%= aliment.glucides %></td>
-    <td><%= aliment.lipides %></td>
-    <td><%= aliment.quantite %></td>
-    <td><%= aliment.unite %></td>
+    <td><%= aliment.unite_id %></td>
     <td><%= link_to 'Show', aliment %></td>
     <td><%= link_to 'Edit', edit_aliment_path(aliment) %></td>
     <td><%= link_to 'Destroy', aliment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

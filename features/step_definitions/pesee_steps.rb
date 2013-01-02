@@ -10,7 +10,7 @@ Then /^I should see a successful pesee create message$/ do
   page.should have_content "Pesee was successfully created."
 end
 
-When /^I go to see all my pesees$/ do
+When /^I want to see all my pesees$/ do
   click_link "Voir mes pesées"
 end
 
