@@ -2,8 +2,7 @@ class PeseesController < ApplicationController
   # GET /pesees
   # GET /pesees.json
   def index
-    @user = User.find(params[:user_id])
-    @pesees = @user.pesees
+    @pesees = current_user.pesees
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,9 +24,7 @@ class PeseesController < ApplicationController
   # GET /pesees/new
   # GET /pesees/new.json
   def new
-    #@pesee = Pesee.new
-    @user = User.find(params[:user_id])
-    @pesee = @user.pesees.build
+    @pesee = Pesee.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,20 +34,18 @@ class PeseesController < ApplicationController
 
   # GET /pesees/1/edit
   def edit
-    @user = User.find(params[:user_id])
     @pesee = Pesee.find(params[:id])
   end
 
   # POST /pesees
   # POST /pesees.json
   def create
-    @user = User.find(params[:user_id])
-    @pesee = @user.pesees.build(params[:pesee])
+    @pesee = Pesee.create(params[:pesee])
 
     respond_to do |format|
       if @pesee.save
-        format.html { redirect_to @user, notice: 'Pesee was successfully created.' }
-        format.json { render json: @user, status: :created, location: @pesee }
+        format.html { redirect_to user_path(current_user), notice: 'Pesee was successfully created.' }
+        format.json { render json: @pesee, status: :created, location: @pesee }
       else
         format.html { render action: "new" }
         format.json { render json: @pesee.errors, status: :unprocessable_entity }
@@ -65,7 +60,7 @@ class PeseesController < ApplicationController
 
     respond_to do |format|
       if @pesee.update_attributes(params[:pesee])
-        format.html { redirect_to user_pesees_path(@pesee.user.id), notice: 'Pesee was successfully updated.' }
+        format.html { redirect_to pesees_path, notice: 'Pesee was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -81,7 +76,7 @@ class PeseesController < ApplicationController
     @pesee.destroy
 
     respond_to do |format|
-      format.html { redirect_to user_pesees_url(@pesee.user.id) }
+      format.html { redirect_to pesees_path }
       format.json { head :no_content }
     end
   end

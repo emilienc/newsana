@@ -15,8 +15,8 @@
   <tr>
     <td><%= pesee.quand %></td>
     <td><%= pesee.what %> kg</td>
-    <td><%= link_to 'Modifier', edit_user_pesee_path(pesee.user.id,pesee.id) %></td>
-    <td><%= link_to 'Supprimer', user_pesee_path(pesee.user.id,pesee), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Modifier', edit_pesee_path(pesee) %></td>
+    <td><%= link_to 'Supprimer', pesee_path(pesee), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </tbody>

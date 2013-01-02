@@ -2,19 +2,15 @@ Newsana::Application.routes.draw do
 
 scope "(:locale)", :locale => /en|fr/ do
 
-  
-
   resources :unites
 
-
   resources :aliments
-
 
   resources :ingredients
 
   resources :repas
 
-
+  resources :pesees
 
  
  authenticated :user do
@@ -28,7 +24,7 @@ scope "(:locale)", :locale => /en|fr/ do
   ActiveAdmin.routes(self)
   
   resources :users do
-    resources :pesees, :profiles
+    resources :profiles
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
