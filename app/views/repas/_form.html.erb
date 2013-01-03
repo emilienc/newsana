@@ -7,7 +7,7 @@
     <%= f.input :name, :collection => ['petit dejeuner', 'dejeuner', 'collation', 'diner'] %>
     <%= f.simple_fields_for :ingredients do |ff| %>
     	<%= ff.input :quantite %>
-    	<%= ff.input :aliment_id ,:collection => Aliment.all, prompt:  'Choose the aliment'%>
+      <%= ff.input :aliment_id, :collection => Aliment.all, :required => true, :autofocus => true, :label => 'Pick an Aliment', :label_method=>:full_name, :input_html => {:class => "chzn-select" } %>
       <%= ff.link_to_remove "Remove this task" %>
     <%end%>
    <p><%= f.link_to_add "Add an aliment", :ingredients %></p>

@@ -6,15 +6,11 @@ Feature: Create Repas
 
     Scenario: User create a valid repas
       Given I am logged in
-      When I enter a repas with valid repas data
+      When I create a valid repas
       Then I should see a successful repas create message
 
-     Scenario: User manages his repas
+	Scenario: User create a bad repas
       Given I am logged in
-      When I want to see all my repas
-      Then I should see a table with my repas
-
-    Scenario: User inserts aliments
-      Given I am logged in
-      When  I create a repas with aliments
-      Then I should see a successful repas create message      
+      When I create a bad repas
+      Then I should not see a successful repas create message
+    

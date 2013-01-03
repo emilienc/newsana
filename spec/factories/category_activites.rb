@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :category_activite do
-    name "MyString"
+    name "Velo"
   end
 end

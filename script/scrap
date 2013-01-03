@@ -1,0 +1,54 @@
+require 'rubygems'
+require 'nokogiri'
+require 'open-uri'
+require 'csv'
+require 'rails/all'
+
+url = "http://www.tabledescalories.com/aliments-boissons-a-p1.html"
+doc = Nokogiri::HTML(open(url))
+
+puts 'on recupere les noms'
+doc.css("#listeAliments a").each do |item|
+  @name = item.text
+end
+
+puts 'on recupere les calories'
+doc.css("#listeAliments td:nth-child(2)").each do |item|
+  @calories = item.text
+end
+
+#puts 'on recupere les proteines'
+#doc.css("#listeAliments td:nth-child(3)").each do |item|
+#  @proteines = item.text
+#end
+
+#puts 'on recupere les glucides'
+#doc.css("#listeAliments td:nth-child(4)").each do |item|
+#  @glucides = item.text
+#end
+
+#puts 'on recupere les lipides'
+#doc.css("#listeAliments td:nth-child(5)").each do |item|
+#  @lipides = item.text
+#end
+
+filename = 'csvout.csv'
+
+CSV.open(filename, 'w') do |csv|
+	csv << ['name','calories']
+	@name.length.times do |i|
+	 csv << [@name[i],@calories[i]]
+	end
+
+end
+
+
+#@name.length.times do |i|
+#	@aliment = Aliment.create(name: @name[i],calories: @calories[i],proteines: @proteines[i], glucides: @glucides[i], lipides: #@lipides[i] )
+#end
+
+#@aliments = Aliment.all
+#@aliments..each do |a|
+#puts a.name
+
+end
