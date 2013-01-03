@@ -21,3 +21,5 @@ puts 'CATEGORY_ACTIVITE'
 CategoryActivite.create({ :name => 'vélo', :MET=>8.0 })
 CategoryActivite.create({ :name => 'marche' , :MET=>4.0})
 CategoryActivite.create({ :name => 'course à pied', :MET=>7.0 })
+puts 'ALIMENT'
+Aliment.create(name: "test", calories: 10, portion: 5, unite_id: 1)

@@ -5,7 +5,7 @@
     <th>User</th>
     <th>When</th>
     <th>Type</th>
-    <th></th>
+    <th>Calories</th>
     <th></th>
     <th></th>
   </tr>
@@ -15,6 +15,7 @@
     <td><%= repa.user_id %></td>
     <td><%= repa.quand %></td>
     <td><%= repa.name %></td>
+    <td><%= repa.calories %></td>
     <td><%= link_to 'Modifier', edit_repa_path(repa) %></td>
     <td><%= link_to 'Supprimer', repa_path(repa), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
