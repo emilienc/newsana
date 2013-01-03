@@ -5,6 +5,7 @@ gem 'sqlite3'
 gem 'nested_form'
 gem 'nokogiri'
 gem 'chosen-rails'
+gem 'rails-i18n'
 
 # Gems used only for assets and not required
 # in production environments by default.

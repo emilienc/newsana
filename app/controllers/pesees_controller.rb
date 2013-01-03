@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class PeseesController < ApplicationController
   # GET /pesees
   # GET /pesees.json
@@ -44,7 +45,7 @@ class PeseesController < ApplicationController
 
     respond_to do |format|
       if @pesee.save
-        format.html { redirect_to user_path(current_user), notice: 'Pesee was successfully created.' }
+        format.html { redirect_to user_path(current_user), notice: 'Votre nouveau poids a été enregistré avec succés.' }
         format.json { render json: @pesee, status: :created, location: @pesee }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class PeseesController < ApplicationController
 
     respond_to do |format|
       if @pesee.update_attributes(params[:pesee])
-        format.html { redirect_to pesees_path, notice: 'Pesee was successfully updated.' }
+        format.html { redirect_to pesees_path, notice: 'Cette pesée a été modifiée avec succés.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,25 +1,23 @@
-<h1>Liste des repas</h1>
+<h1>Liste des repas de <%=current_user.name%></h1>
 
-<table>
+<table class="table table-striped">
   <tr>
-    <th>User</th>
-    <th>When</th>
-    <th>Type</th>
-    <th>nb ingredients</th>
-    <th>Calories</th>
+    <th>Date</th>
+    <th>Type de Repas</th>
+    <th>Nombre d'ingredients</th>
+    <th>Nombre de calories du repas</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @repas.each do |repa| %>
   <tr>
-    <td><%= repa.user_id %></td>
     <td><%= repa.quand %></td>
     <td><%= repa.name %></td>
     <td><%= repa.ingredients.count %></td>
     <td><%= repa.calories %></td>
     <td><%= link_to 'Modifier', edit_repa_path(repa) %></td>
-    <td><%= link_to 'Supprimer', repa_path(repa), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Supprimer', repa_path(repa), method: :delete, data: { confirm: 'Etes vous sur?' } %></td>
   </tr>
 <% end %>
 </table>

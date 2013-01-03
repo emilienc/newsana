@@ -4,7 +4,7 @@ class Aliment < ActiveRecord::Base
   belongs_to :unite
 
   def full_name
-  	[name,portion.to_s,unite.name].join('')
+  	[name,'portion de',portion.to_s,unite.name].join(' ')
   end
 
 end

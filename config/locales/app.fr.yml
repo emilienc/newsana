@@ -1,0 +1,37 @@
+fr:
+ user:
+  nom: 'Nom'
+  email: 'Email'
+  password: 'Mot de passe'
+  password_confirmation: 'Confirmation du mot de passe'
+  password_current: 'Mot de passe actuel'
+ imc:
+  surpoids: 'surpoids'
+  normal: 'normal'
+ nav:
+  home: 'Accueil'
+  logout: 'Deconnexion'
+  infos: 'Gerer mes infos'
+  account: 'Gerer mon compte'
+  profil: 'Gerer mon profil'
+  weight: 
+   title: 'Gerer mon poids'
+   add: 'Ajouter une pesée'
+   see: 'Voir mes pesées'
+  food: 
+   title: 'Gerer mon alimentation'
+   add: 'Ajouter un repas'
+   see: 'Voir mes repas'
+  exercise: 
+   title: 'Gerer mes activités'
+   add: 'Ajouter une actvité'
+   see: 'Voir mes activités'
+  connexion: 
+   title: 'Connexion'
+   facebook: 'Se connecter avec Facebook'
+   login: 'Se connecter'
+   signup: 'Créer un compte'
+ home:
+  welcome: "Bienvenue sur le site qui maintient en forme"
+  description: "Vous voulez suivre votre poids, votre alimentation et vos activites pour rester en forme en relation avec vos amis , rejoignez nous c'est gratuit"
+  signup: 'Rejoignez nous!'

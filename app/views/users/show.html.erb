@@ -18,6 +18,27 @@
 
 
 
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+  new Highcharts.Chart({
+    chart: { renderTo: 'calories_chart' },
+    title: { text: 'Apport Calorique journalier' },
+    xAxis: { type: 'datetime' },
+    yAxis: {
+      title: { text: 'kcal' }
+    },
+    series: [{
+      pointInterval: <%= 1.day * 1000 %>,
+      pointStart: <%= 10.days.ago.at_midnight.to_i * 1000 %>,
+      data: <%= @calories %>
+    }]
+  });
+});
+</script>
+
+
+
+
 <div class='row'>
       <div class="span4 well">
     	   <div class="row">
@@ -38,8 +59,12 @@
     		    </div>
     	   </div>
       </div>
-      <div class="span2">
+      <div class="span4">
         <div id="pesees_chart" style="width: 560px; height: 300px;"></div>
+      </div>
+      <div class="span4"></div>
+      <div class="span4">
+        <div id="calories_chart" style="width: 560px; height: 300px;"></div>
       </div>
 </div>
 

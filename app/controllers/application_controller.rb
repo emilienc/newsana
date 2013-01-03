@@ -15,7 +15,9 @@ class ApplicationController < ActionController::Base
   end
   
   def set_user_language
-  	I18n.locale = params[:locale] || I18n.default_locale
+  	#I18n.locale = params[:locale] || I18n.default_locale
+    #pour l'instant on demarre le site en français
+    I18n.locale = 'fr'
   end
  
   def authenticate_admin_user!

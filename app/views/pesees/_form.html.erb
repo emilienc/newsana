@@ -1,9 +1,10 @@
+# encoding: UTF-8
 <%= simple_form_for(@pesee) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :quand %>
-    <%= f.input :what %>
+    <%= f.input :quand, label: 'Date de la pesée' %>
+    <%= f.input :what, label: 'Votre poids en kg' %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
 

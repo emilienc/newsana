@@ -3,9 +3,9 @@
 
   <div class="form-inputs">
   	<%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.input :category_activite_id, :collection => CategoryActivite.all, prompt:  'Choose the category' %>
-    <%= f.input :duree, label: "Durée en minutes" %>
-    <%= f.input :quand %>
+    <%= f.input :quand, label: "Date de l'activité" %>
+    <%= f.input :category_activite_id, :collection => CategoryActivite.all, label: "Type d'activité" %>
+    <%= f.input :duree, label: "Durée de l'activité en minutes" %> 
   </div>
 
   <div class="form-actions">

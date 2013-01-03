@@ -25,7 +25,7 @@ class RepasController < ApplicationController
   # GET /repas/new
   # GET /repas/new.json
   def new
-   
+    @aliments = Aliment.all
     @repa = Repa.new
     @ingredient = @repa.ingredients.build
 
