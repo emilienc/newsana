@@ -1,4 +1,4 @@
-require 'Doctor'
+
 
 class Activite < ActiveRecord::Base
   attr_accessible :category_activite_id, :duree, :quand, :user_id

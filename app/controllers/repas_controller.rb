@@ -37,6 +37,7 @@ class RepasController < ApplicationController
 
   # GET /repas/1/edit
   def edit
+    @aliments = Aliment.all
     @repa = Repa.find(params[:id])
   end
 

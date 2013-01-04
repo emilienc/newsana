@@ -4,7 +4,6 @@
   <tr>
     <th>Date</th>
     <th>Type de Repas</th>
-    <th>Nombre d'ingredients</th>
     <th>Nombre de calories du repas</th>
     <th></th>
     <th></th>
@@ -14,8 +13,10 @@
   <tr>
     <td><%= repa.quand %></td>
     <td><%= repa.name %></td>
-    <td><%= repa.ingredients.count %></td>
     <td><%= repa.calories %></td>
+    <% repa.ingredients.each do |ing| %>
+      <td><%= ing.calories %></td>  
+    <%end%>
     <td><%= link_to 'Modifier', edit_repa_path(repa) %></td>
     <td><%= link_to 'Supprimer', repa_path(repa), method: :delete, data: { confirm: 'Etes vous sur?' } %></td>
   </tr>

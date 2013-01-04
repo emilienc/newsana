@@ -13,14 +13,6 @@ require 'rails/all'
 
 puts 'ADMIN USER'
 user = User.find_or_create_by_email :admin => true,:name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
-#puts 'user: ' << user.name
-#user.add_role :admin
-#user2 = User.find_or_create_by_email :name => 'Second User', :email => 'user2@example.com', :password => 'please', :password_confirmation => 'please'
-#puts 'user: ' << user2.name
-#user2.add_role :VIP
-puts 'UNITE'
-unite1 = Unite.create({ :name => 'gramme' })
-unite2 = Unite.create({ :name => 'litre' })
 puts 'CATEGORY_ACTIVITE'
 CategoryActivite.create({ :name => 'vélo loisir', :MET=>4.5 })
 CategoryActivite.create({ :name => 'vélo course', :MET=>10.0 })
@@ -28,7 +20,7 @@ CategoryActivite.create({ :name => 'vélo appartement', :MET=>7.0 })
 CategoryActivite.create({ :name => 'marche' , :MET=>4.0})
 CategoryActivite.create({ :name => 'course à pied', :MET=>7.0 })
 puts 'ALIMENT'
-filename = 'csvout.csv'
+filename = 'csvout_calories.csv'
 CSV.foreach(filename, headers: true) do |row|
 	puts row[0]
 	@unite = Unite.find_or_create_by_name(row[3])

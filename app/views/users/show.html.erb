@@ -17,24 +17,77 @@
 </script>
 
 
+<% unless @user.profile.nil? || @user.profile.uncomplete? %>
 
-<script type="text/javascript" charset="utf-8">
-  $(function () {
-  new Highcharts.Chart({
-    chart: { renderTo: 'calories_chart' },
-    title: { text: 'Apport Calorique journalier' },
-    xAxis: { type: 'datetime' },
-    yAxis: {
-      title: { text: 'kcal' }
-    },
-    series: [{
-      pointInterval: <%= 1.day * 1000 %>,
-      pointStart: <%= 10.days.ago.at_midnight.to_i * 1000 %>,
-      data: <%= @calories %>
-    }]
-  });
+
+
+
+<script type="text/javascript" charset="utf-8" >
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'calories_chart',
+                type: 'areaspline'
+            },
+            title: {
+                text: 'Balance calorique quotidienne'
+            },
+            xAxis: {
+                categories: [
+                    <%=(7.days.ago).day%>,
+                    <%=(6.days.ago).day%>,
+                    <%=(5.days.ago).day%>,
+                    <%=(4.days.ago).day%>,
+                    <%=(3.days.ago).day%>,
+                    <%=(2.days.ago).day%>,
+                    <%=(1.days.ago).day%>,
+                    <%=(0.days.ago).day%>
+                ],
+                
+            },
+            yAxis: {
+                title: {
+                    text: 'Kcal'
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return ''+
+                    this.y +' Kcal';
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                areaspline: {
+                    fillOpacity: 0.1
+                }
+            },
+            series: [{
+                name: 'Calories acquises',
+                data: <%=@calories_acquise%>
+            }, {
+                name: 'Calories dépensées',
+                data: <%=@calories_depense%>
+            }, {
+                name: 'Metabolisme',
+                data: <%=@metabolismes%>
+            }, {
+                name: 'Besoin théorique',
+                data: <%=@besoins%>
+            } 
+
+            ]
+        });
+    });
+    
 });
 </script>
+
+<%end%>
 
 
 
@@ -48,13 +101,8 @@
                 <% unless @user.pesees.count ==0 %>
                   <p><%=@user.pesees.last.what %> kg pour <%=@user.taille%> cm</p>
                 <%end%>
-    			       <p><strong><%=@user.email%></strong></p>
-                 <% unless @user.profile.nil? || @user.profile.uncomplete? %>
-                 <p><strong>IMC : <%=Doctor.imc(@user)%> (<%=Doctor.avis_imc(@user)%>)</strong></p>
-                 <p><strong>IMG : <%=Doctor.img(@user)%> % (<%=Doctor.avis_img(@user)%>)</strong></p>
-                 <p><strong>Poids ideal : <%=Doctor.poids_ideal(@user)%> kg</strong></p>
-                 <p><strong>Metabolisme : <%=Doctor.metabolisme(@user)%> kcal</strong></p>
-                 <%end%>
+    			       <p><%=@user.age%> ans <%=@user.profile.comportement%></p>
+                 <p><%=@user.email%></p>
     			       <span class=" badge badge-warning">8 messages</span> <span class=" badge badge-info">15 followers</span>
     		    </div>
     	   </div>
@@ -62,7 +110,20 @@
       <div class="span4">
         <div id="pesees_chart" style="width: 560px; height: 300px;"></div>
       </div>
-      <div class="span4"></div>
+      <div class="span4 well">
+           <div class="row">
+          <div class="span1"><strong>Informations dietetiques</strong></div>
+          <div class="span3">
+            <% unless @user.profile.nil? || @user.profile.uncomplete? %>
+                 <p><strong>Indice de Masse Corporelle : </strong><%=Doctor.imc(@user)%> (<%=Doctor.avis_imc(@user)%>)</p>
+                 <p><strong>Indice Masse Graisseuse : </strong><%=Doctor.img(@user)%> % (<%=Doctor.avis_img(@user)%>)</p>
+                 <p><strong>Poids ideal : </strong><%=Doctor.poids_ideal(@user)%> Kg</p>
+                 <p><strong>Metabolisme : </strong><%=Doctor.metabolisme(@user).round%> Kcal</p>
+                 <p><strong>Besoin Théorique : </strong><%=Doctor.besoin_quotidien(@user).round%> Kcal</p>
+                 <%end%>
+          </div>
+          </div>
+      </div>
       <div class="span4">
         <div id="calories_chart" style="width: 560px; height: 300px;"></div>
       </div>

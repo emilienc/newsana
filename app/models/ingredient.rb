@@ -5,7 +5,8 @@ class Ingredient < ActiveRecord::Base
   belongs_to :repa
 
   def calories
-  	(quantite.to_f / aliment.portion)*aliment.calories
+  	#en Kcal
+  	(quantite.to_f * aliment.calories)
   end
 
 end

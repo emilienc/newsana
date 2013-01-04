@@ -5,32 +5,50 @@ class UsersController < ApplicationController
   #Rails index method is provided by default
 
 
-  def apport_journalier(repas,activites)
-
-    @calact = 0
-    #on fait la somme des calories dépensées ce jour
-    activites.each do |a|
-        @calact += a.calories
-    end
+  def apport_calorique(repas)
     @calrep = 0
     #on fait la somme des calories acquises ce jour
     repas.each do |r|
         @calrep += r.calories
     end
-    @calrep - @calact
-
+    @calrep
   end
 
 
-  def show
-    @dates = (Date.today-10..Date.today).map { |p| p.to_s }
-    @calories = []
-    @user = User.find(params[:id])
+  def depense_calorique(activites,user)
+    #on fait la somme des calories dépensées ce jour
+    @calact = 0
+    #on fait la somme des calories dépensées ce jour
+    activites.each do |a|
+        @calact += a.calories
+    end
+    #on ajoute le metabolisme
+    @calact += Doctor.metabolisme(user)
+  end
 
-    (Date.today-10..Date.today).each do |quand|
-      @repas = current_user.repas.find_all_by_quand(quand)
-      @activites = current_user.activites.find_all_by_quand(quand)
-      @calories << apport_journalier(@repas,@activites)
+  def show
+
+    #on presente 2 courbes : 
+    #la dépense = metabolisme + activite du jour
+    #les calories qu'on a apporté = repas
+
+
+
+    @dates = (Date.today-7..Date.today).map { |p| p.to_s }
+    @calories_depense = []
+    @calories_acquise = []
+    @besoins = []
+    @metabolismes = []
+    @user = User.find(params[:id])
+    unless @user.profile.nil? || @user.profile.uncomplete?
+      (Date.today-7..Date.today).each do |quand|
+        @repas = current_user.repas.find_all_by_quand(quand)
+        @activites = current_user.activites.find_all_by_quand(quand)
+        @calories_depense << depense_calorique(@activites,@user).round
+        @calories_acquise << apport_calorique(@repas).round
+        @metabolismes << Doctor.metabolisme(@user).round
+        @besoins << Doctor.besoin_quotidien(@user).round
+      end
     end
   end
 

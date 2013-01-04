@@ -6,19 +6,36 @@ class Doctor
 		(gender == "female")
 	end
 
+	def self.formule_besoin_quotidien(metabolisme,comportement)
+		case comportement
+		when "sédentaire"
+		 	metabolisme*1.2
+		when "légèrement actif"
+			metabolisme*1.375
+		when "modérément actif"
+			metabolisme*1.55
+		when "très actif"
+			metabolisme*1.725
+		when "très très actif"
+			metabolisme*1.9
+		end
+	end
+
 	def self.formule_poids_ideal(taille,gender)
 		if female?(gender)
-			taille - 100 - ((taille - 150)/4)
+			(taille - 100 - ((taille - 150) / 2.5))
 		else
-		    taille -100 -  ((taille - 150)/2.5)
+		    (taille - 100 - ((taille - 150) / 4.0))
 		end
 	end
 
 	def self.formule_metabolisme(taille,poids,age,gender)
 		if female?(gender)
-    		 230*(poids**0.48*taille**0.5*age**-0.13) 
+    		 #230*(poids**0.48*taille**0.5*age**-0.13) 
+    		 (9.56*poids) + (1.85*taille) - (4.68*age) + 655
     	else
-    		 259*(poids**0.48*taille**0.5*age**-0.13)
+    		 #259*(poids**0.48*taille**0.5*age**-0.13)
+    		 (13.75*poids) + (5*taille) - (6.76*age) + 66
     	end
 	end
 
@@ -47,6 +64,10 @@ class Doctor
 
 	def self.imc(user)
 		formule_imc(user.poids,user.taille) 
+	end
+
+	def self.besoin_quotidien(user)
+		formule_besoin_quotidien(metabolisme(user),user.profile.comportement)
 	end
 
 	def self.img(user)
