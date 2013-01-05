@@ -16,5 +16,14 @@ class Activite < ActiveRecord::Base
 	(@BMR/24)*category_activite.MET*(duree/60.0) 	unless category_activite.nil?
  end
 
+ def start_time
+  	quand
+  end
+
+  def event_name
+    [category_activite.name,'(',calories.round.to_s,'Kcal',')'].join(' ')
+  end
+
+
 
 end

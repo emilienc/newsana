@@ -4,8 +4,9 @@ gem 'rails', '3.2.9'
 gem 'sqlite3'
 gem 'nested_form'
 gem 'nokogiri'
-gem 'chosen-rails'
+
 gem 'rails-i18n'
+gem 'simple_calendar'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -17,11 +18,11 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
 gem 'devise'
 gem 'activeadmin'
 gem 'meta_search'
-#gem 'cancan'
-#gem 'rolify'
+
 gem 'simple_form'
 gem 'figaro'
 gem 'omniauth'

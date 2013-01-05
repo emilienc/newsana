@@ -74,6 +74,21 @@ class Doctor
 		formule_img(formule_imc(user.poids,user.taille),user.age,user.profile.gender).round(1) 
 	end
 
+	def self.label_img(user)
+    	case img(user)
+    		when 0..15
+      			"label-important"
+    		when 15..20
+      			female?(user.profile.gender) ? "label-warning" : "label-success"
+    		when 25..30
+      			female?(user.profile.gender) ? "label-success" : "label-warning"
+    		else
+      			"label-important"
+    	end
+    end
+
+
+
 	def self.avis_img(user)
     	case img(user)
     		when 0..15
@@ -85,8 +100,30 @@ class Doctor
     		else
       			"trop de graisse"
     	end
-  end
+    end
 
+
+    def self.label_imc(user)
+		unless user.age < 18
+			case imc(user)
+				when 0..16.5
+      				"label-important"
+    			when 16.5..18.5
+      				"label-warning"
+    			when 18.5..25
+      				"label-success"
+    			when 25..30
+      				"label-warning"
+    			when 30..35
+      				"label-warning"
+    			when 35..40
+      				"label-important"
+    			else
+      				"label-important"
+
+    		end
+        end
+    end
 
 	def self.avis_imc(user)
 		unless user.age < 18

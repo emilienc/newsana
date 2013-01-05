@@ -1,3 +1,8 @@
+<div class='row'>
+
+      <div class="span8 well">
+
+
 <%= simple_nested_form_for(@repa) do |f| %>
   <%= f.error_notification %>
 
@@ -7,13 +12,32 @@
     <%= f.input :name,label: 'Type de repas', :collection => ['petit dejeuner', 'dejeuner', 'collation', 'diner'] %>
     <%= f.simple_fields_for :ingredients do |ff| %>
       <%= ff.input :aliment_id, :collection => @aliments, :required => true, :autofocus => true, :label => 'Selectionner un aliment', :label_method=>:full_name%>
-      <%= ff.input :quantite, label: 'Quelle quantité avez vous manger en nombre de portions ? ' %>
-      <%= ff.link_to_remove "Supprimer cet aliment" %>
+      <div class = 'row'>
+         <div class="span5">
+            <%= ff.input :quantite, label: 'Quelle quantité avez vous manger en nombre de portions ? ' %>
+         </div>
+         <div class="span3">
+            <%= ff.link_to_remove "Supprimer cet aliment", class: "btn btn-danger" %>
+         </div>
+    </div>
     <%end%>
-   <p><%= f.link_to_add "Ajouter un aliment au repas", :ingredients %></p>
+   <p><%= f.link_to_add "Ajouter un aliment au repas", :ingredients, class: "btn btn-success" %></p>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+<div class="form-actions">  
+    <%if delete %>
+      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+        <i class="icon-ok icon-white"></i> Modifier
+      <% end %>
+      <%= button_tag(type: 'submit', class: "btn btn-primary btn-danger", :name=>'destroy') do %>
+        <i class="icon-trash icon-white"></i> Supprimer
+      <% end %>
+    <%else%> 
+        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+        <i class="icon-ok icon-white"></i> Créer
+        <%end%>
+    <%end%>
   </div>
-<% end %>
+<%end%>
+</div>
+</div>

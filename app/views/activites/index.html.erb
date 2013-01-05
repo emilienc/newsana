@@ -1,27 +1,6 @@
-<h1>Liste des activites de <%=current_user.name%></h1>
+<h1>Activites de <%=current_user.name%></h1>
 
-<table class="table table-striped">
-  <tr>
-    <th>Type d'activite</th>
-    <th>Duree</th>
-    <th>Date</th>
-    <th>Calories dépensées</th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @activites.each do |activite| %>
-  <tr>
-    <td><%= activite.category_activite.name %></td>
-    <td><%= activite.duree %> minutes</td>
-    <td><%= activite.quand %></td>
-    <% if current_user.profile.uncomplete? %>
-    <td>Votre profil doit etre complet pour que nous puissions calculer les calories </td>
-    <%else%>
-    <td><%= activite.calories%></td>
-    <%end%>
-    <td><%= link_to 'Modifier', edit_activite_path(activite) %></td>
-    <td><%= link_to 'Supprimer', activite, method: :delete, data: { confirm: 'Etes vous sur?' } %></td>
-  </tr>
+<%= calendar @activites do |activite| %>
+  <div><%= link_to activite.event_name, edit_activite_path(activite) %></div>
 <% end %>
-</table>

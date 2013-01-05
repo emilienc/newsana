@@ -9,7 +9,7 @@ fr:
   surpoids: 'surpoids'
   normal: 'normal'
  nav:
-  home: 'Accueil'
+  home: 'Dietbook'
   logout: 'Deconnexion'
   infos: 'Gerer mes infos'
   account: 'Gerer mon compte'

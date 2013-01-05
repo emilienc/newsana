@@ -9,5 +9,13 @@ class Repa < ActiveRecord::Base
   	ingredients.sum(&:calories)
   end
 
+  def start_time
+  	quand
+  end
+
+  def event_name
+    [name,'(',calories.round.to_s,'Kcal',')'].join(' ')
+  end
+
 
 end

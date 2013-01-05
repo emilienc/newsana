@@ -26,6 +26,10 @@ class UsersController < ApplicationController
     @calact += Doctor.metabolisme(user)
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def show
 
     #on presente 2 courbes : 
@@ -40,6 +44,7 @@ class UsersController < ApplicationController
     @besoins = []
     @metabolismes = []
     @user = User.find(params[:id])
+    
     unless @user.profile.nil? || @user.profile.uncomplete?
       (Date.today-7..Date.today).each do |quand|
         @repas = current_user.repas.find_all_by_quand(quand)
@@ -52,25 +57,25 @@ class UsersController < ApplicationController
     end
   end
 
-  # def update
+  def update
   #  authorize! :update, @user, :message => 'Not authorized as an administrator.'
-  #  @user = User.find(params[:id])
-  #  if @user.update_attributes(params[:user], :as => :admin)
-  #    redirect_to users_path, :notice => "User updated."
-  #  else
-  #    redirect_to users_path, :alert => "Unable to update user."
-  #  end
-  #end
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      redirect_to users_path, :notice => "User updated."
+    else
+      redirect_to users_path, :alert => "Unable to update user."
+    end
+  end
 
-  #def destroy
+  def destroy
   #  authorize! :destroy, @user, :message => 'Not authorized as an administrator.'
-  #  user = User.find(params[:id])
-  #  unless user == current_user
-  #    user.destroy
-  #    redirect_to users_path, :notice => "User deleted."
-  #  else
-  #    redirect_to users_path, :notice => "Can't delete yourself."
-  #  end
-  #end
+    user = User.find(params[:id])
+    unless user == current_user
+      user.destroy
+      redirect_to users_path, :notice => "User deleted."
+    else
+      redirect_to users_path, :notice => "Can't delete yourself."
+    end
+  end
 
 end

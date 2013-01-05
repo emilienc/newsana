@@ -6,7 +6,7 @@ class Ingredient < ActiveRecord::Base
 
   def calories
   	#en Kcal
-  	(quantite.to_f * aliment.calories)
+  	(quantite * aliment.calories)
   end
 
 end

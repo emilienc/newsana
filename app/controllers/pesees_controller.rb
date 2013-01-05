@@ -59,9 +59,17 @@ class PeseesController < ApplicationController
   def update
     @pesee = Pesee.find(params[:id])
 
+    if params[:destroy]
+       @result = @pesee.destroy
+       @notice = 'Cette pesée a été supprimée avec succés.'
+    else
+       @result = @pesee.update_attributes(params[:pesee])
+       @notice = 'Cette pesée a été modifiée avec succés.'
+    end
+
     respond_to do |format|
-      if @pesee.update_attributes(params[:pesee])
-        format.html { redirect_to pesees_path, notice: 'Cette pesée a été modifiée avec succés.' }
+      if @result
+        format.html { redirect_to pesees_path, notice: @notice }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

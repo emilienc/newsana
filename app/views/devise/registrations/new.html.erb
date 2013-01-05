@@ -1,11 +1,32 @@
-<h2>Sign up</h2>
+<div class='row'>
+	<h1>Inscription</h1>
+	<h2>C’est gratuit (et ça le restera toujours)</h2>
+   <div class="span4 well">
+    <div class='row'>
+      <div class="span1"></div>
+      <div class="span2">
+          <%- if devise_mapping.omniauthable? %>
+            <%- resource_class.omniauth_providers.each do |provider| %>
+            <%= link_to image_tag("facebook-connect-logo.jpg", :alt => "Facebook"), omniauth_authorize_path(resource_name, provider) %><br />
+          <% end -%></br>
+      </div>
+      <div class="span2"></div>
+    </div>
+  En utilisant Facebook pour vous inscrire votre profil sera pré-rempli et le site sera plus agrable à utiliser.</br>
+   </div>
+	 <div class="span6 well">
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
   <%= display_base_errors resource %>
-  <%= f.input :name, :autofocus => true %>
-  <%= f.input :email, :required => true %>
-  <%= f.input :password, :required => true %>
-  <%= f.input :password_confirmation, :required => true %>
-  <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
+  <%= f.input :name, :autofocus => true, label: t('user.nom') %>
+  <%= f.input :email, :required => true, label: t('user.email') %>
+  <%= f.input :password, label: t('user.password'), :required => true %>
+  <%= f.input :password_confirmation,label: t('user.password_confirmation'), :required => true %>
+ <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+        <i class="icon-ok icon-white"></i> Inscription
+      <% end %>
 <% end %>
-<%= render "devise/shared/links" %>
+
+<% end -%>
+</div>
+</div>

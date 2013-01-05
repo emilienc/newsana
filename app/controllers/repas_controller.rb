@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class RepasController < ApplicationController
   # GET /repas
   # GET /repas.json
@@ -62,9 +63,18 @@ class RepasController < ApplicationController
   def update
     @repa = Repa.find(params[:id])
 
+    if params[:destroy]
+       @result = @repa.destroy
+       @notice = 'Ce repas a été supprimée avec succés.'
+    else
+       @result = @repa.update_attributes(params[:repa])
+       @notice = 'Cette pesée a été modifiée avec succés.'
+    end
+
+
     respond_to do |format|
-      if @repa.update_attributes(params[:repa])
-        format.html { redirect_to @repa, notice: 'Repa was successfully updated.' }
+      if @result
+        format.html { redirect_to @repa, notice: @notice }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

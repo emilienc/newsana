@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ActivitesController < ApplicationController
 
 
@@ -29,7 +30,7 @@ def index
 
     respond_to do |format|
       if @activite.save
-        format.html { redirect_to user_path(current_user), notice: 'Activite was successfully created.' }
+        format.html { redirect_to activites_path, notice: 'Activite was successfully created.' }
         format.json { render json: @activite, status: :created, location: @activite }
       else
         format.html { render action: "new" }
@@ -40,17 +41,24 @@ def index
 
   def update
     @activite = Activite.find(params[:id])
-
-    respond_to do |format|
-      if @activite.update_attributes(params[:activite])
-        format.html { redirect_to activites_path, notice: 'Pesee was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @activite.errors, status: :unprocessable_entity }
-      end
+    
+    if params[:destroy]
+       @result = @activite.destroy
+       @notice = 'Activite was successfully deleted.' 
+    else
+       @result = @activite.update_attributes(params[:activite])
+       @notice = 'Activite was successfully updated.' 
     end
-  end
 
+      respond_to do |format|
+        if @result
+          format.html { redirect_to activites_path, notice: @notice }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @activite.errors, status: :unprocessable_entity }
+        end
+      end
+  end
 
 end

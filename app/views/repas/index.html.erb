@@ -1,28 +1,8 @@
-<h1>Liste des repas de <%=current_user.name%></h1>
+<h1>Repas de <%=current_user.name%></h1>
 
-<table class="table table-striped">
-  <tr>
-    <th>Date</th>
-    <th>Type de Repas</th>
-    <th>Nombre de calories du repas</th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @repas.each do |repa| %>
-  <tr>
-    <td><%= repa.quand %></td>
-    <td><%= repa.name %></td>
-    <td><%= repa.calories %></td>
-    <% repa.ingredients.each do |ing| %>
-      <td><%= ing.calories %></td>  
-    <%end%>
-    <td><%= link_to 'Modifier', edit_repa_path(repa) %></td>
-    <td><%= link_to 'Supprimer', repa_path(repa), method: :delete, data: { confirm: 'Etes vous sur?' } %></td>
-  </tr>
+<%= calendar @repas do |repa| %>
+  <div><%= link_to repa.event_name, edit_repa_path(repa) %></div>
 <% end %>
-</table>
-
-<br />
 
 

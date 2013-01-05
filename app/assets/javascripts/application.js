@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require chosen-jquery
 //= require jquery_nested_form
 //= require bootstrap
 //= require highcharts

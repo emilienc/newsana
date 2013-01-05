@@ -95,36 +95,36 @@ $(function () {
 <div class='row'>
       <div class="span4 well">
     	   <div class="row">
-    		    <div class="span1"><%=image_tag @user.image%></div>
+    		    <div class="span1"><%=image_tag @user.image, class: 'thumbnail'%></div>
     		    <div class="span3">
-    			       <p><%=@user.name%></p>
+    			       <p><strong><%=@user.name%></strong></p>
                 <% unless @user.pesees.count ==0 %>
                   <p><%=@user.pesees.last.what %> kg pour <%=@user.taille%> cm</p>
                 <%end%>
-    			       <p><%=@user.age%> ans <%=@user.profile.comportement%></p>
+    			       <p><%=@user.age%> ans <%=@user.profile.comportement unless @user.profile.nil? || @user.profile.uncomplete?%></p>
                  <p><%=@user.email%></p>
-    			       <span class=" badge badge-warning">8 messages</span> <span class=" badge badge-info">15 followers</span>
+    			       
     		    </div>
     	   </div>
       </div>
-      <div class="span4">
+      <div class="span5">
         <div id="pesees_chart" style="width: 560px; height: 300px;"></div>
       </div>
       <div class="span4 well">
            <div class="row">
-          <div class="span1"><strong>Informations dietetiques</strong></div>
+          <div class="span1"><h6><i class='icon-large icon-tags'></i> Infos</h6></div>
           <div class="span3">
             <% unless @user.profile.nil? || @user.profile.uncomplete? %>
-                 <p><strong>Indice de Masse Corporelle : </strong><%=Doctor.imc(@user)%> (<%=Doctor.avis_imc(@user)%>)</p>
-                 <p><strong>Indice Masse Graisseuse : </strong><%=Doctor.img(@user)%> % (<%=Doctor.avis_img(@user)%>)</p>
-                 <p><strong>Poids ideal : </strong><%=Doctor.poids_ideal(@user)%> Kg</p>
-                 <p><strong>Metabolisme : </strong><%=Doctor.metabolisme(@user).round%> Kcal</p>
-                 <p><strong>Besoin Théorique : </strong><%=Doctor.besoin_quotidien(@user).round%> Kcal</p>
+                 <p><span class='<%= raw("label #{Doctor.label_imc(@user)}")%>'> Indice de Masse Corporelle : </span> <%=Doctor.imc(@user)%> (<%=Doctor.avis_imc(@user)%>)</p>
+                 <p><span class='<%= raw("label #{Doctor.label_img(@user)}")%>' > Indice de Masse Graisseuse : </span> <%=Doctor.img(@user)%> % (<%=Doctor.avis_img(@user)%>)</p>
+                 <p><span class="label label-info"> Poids idéal : </span> <%=Doctor.poids_ideal(@user)%> Kg</p>
+                 <p><span class="label label-info"> Métabolisme de base : </span> <%=Doctor.metabolisme(@user).round%> Kcal</p>
+                 <p><span class="label label-info"> Besoin Théorique : </span> <%=Doctor.besoin_quotidien(@user).round%> Kcal</p>
                  <%end%>
           </div>
           </div>
       </div>
-      <div class="span4">
+      <div class="span5">
         <div id="calories_chart" style="width: 560px; height: 300px;"></div>
       </div>
 </div>
