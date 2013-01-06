@@ -63,7 +63,7 @@ $(function () {
             },
             plotOptions: {
                 areaspline: {
-                    fillOpacity: 0.1
+                    fillOpacity: 0.01
                 }
             },
             series: [{
@@ -78,6 +78,9 @@ $(function () {
             }, {
                 name: 'Besoin théorique',
                 data: <%=@besoins%>
+            }, {
+                name: 'Objectif',
+                data: <%=@objectifs%>
             } 
 
             ]
@@ -98,12 +101,17 @@ $(function () {
     		    <div class="span1"><%=image_tag @user.image, class: 'thumbnail'%></div>
     		    <div class="span3">
     			       <p><strong><%=@user.name%></strong></p>
-                <% unless @user.pesees.count ==0 %>
+                <% unless @user.pesees.empty? %>
                   <p><%=@user.pesees.last.what %> kg pour <%=@user.taille%> cm</p>
+                <%else%>
+                  <p>Vous n'avez pas encore de pesée</p>
                 <%end%>
+                <% if @user.age == 0 %>
+                <P>Votre profil est incomplet nous ne connaissons pas votre age</p>
+                <%else%>
     			       <p><%=@user.age%> ans <%=@user.profile.comportement unless @user.profile.nil? || @user.profile.uncomplete?%></p>
                  <p><%=@user.email%></p>
-    			       
+    			       <%end%>
     		    </div>
     	   </div>
       </div>
@@ -120,7 +128,12 @@ $(function () {
                  <p><span class="label label-info"> Poids idéal : </span> <%=Doctor.poids_ideal(@user)%> Kg</p>
                  <p><span class="label label-info"> Métabolisme de base : </span> <%=Doctor.metabolisme(@user).round%> Kcal</p>
                  <p><span class="label label-info"> Besoin Théorique : </span> <%=Doctor.besoin_quotidien(@user).round%> Kcal</p>
+                 <%unless @user.target.nil? || @user.pesees.empty?%>
+                 <p><span class="label label-info"> Besoin pour Objectif : </span> <%=Doctor.besoin_cible(@user).round%> Kcal</p>
                  <%end%>
+            <%else%>
+              <p> Vous devez completer votre profil et ajouter une pesée pour voir vos infos nutritionnelles</p>
+            <%end%>
           </div>
           </div>
       </div>

@@ -39,7 +39,7 @@ def sign_up
   fill_in "user_email", :with => @visitor[:email]
   fill_in "user_password", :with => @visitor[:password]
   fill_in "user_password_confirmation", :with => @visitor[:password_confirmation]
-  click_button "Sign up"
+  click_button "Inscription"
   find_user
 end
 
@@ -47,7 +47,7 @@ def sign_in
   visit '/users/sign_in'
   fill_in "user_email", :with => @visitor[:email]
   fill_in "user_password", :with => @visitor[:password]
-  click_button "Sign in"
+  click_button "Connexion"
 end
 
 ### GIVEN ###
@@ -127,10 +127,10 @@ When /^I sign in with a wrong password$/ do
 end
 
 When /^I edit my account details$/ do
-  click_link "Gérer mon compte"
+  click_link "Gerer mon compte"
   fill_in "user_name", :with => "newname"
   fill_in "user_current_password", :with => @visitor[:password]
-  click_button "Update"
+  click_button "Modifier"
 end
 
 When /^I look at the list of users$/ do
@@ -139,15 +139,14 @@ end
 
 ### THEN ###
 Then /^I should be signed in$/ do
-  page.should have_content "Logout"
-  page.should_not have_content "Sign up"
-  page.should_not have_content "Login"
+  page.should have_content "Deconnexion"
+  page.should_not have_content "Inscription"
+  page.should_not have_content "Connexion"
 end
 
 Then /^I should be signed out$/ do
-  page.should have_content "Sign up"
-  page.should have_content "Login"
-  page.should_not have_content "Logout"
+  page.should have_content "Connexion"
+  page.should_not have_content "Deconnexion"
 end
 
 Then /^I see an unconfirmed account message$/ do
@@ -155,39 +154,39 @@ Then /^I see an unconfirmed account message$/ do
 end
 
 Then /^I see a successful sign in message$/ do
-  page.should have_content "Signed in successfully."
+  page.should have_content "Connecté avec succès."
 end
 
 Then /^I should see a successful sign up message$/ do
-  page.should have_content "Welcome! You have signed up successfully."
+  page.should have_content "Bienvenue ! Vous vous êtes enregistré avec succès"
 end
 
 Then /^I should see an invalid email message$/ do
-  page.should have_content "Emailis invalid"
+  page.should have_content "Emailn'est pas valide"
 end
 
 Then /^I should see a missing password message$/ do
-  page.should have_content "Passwordcan't be blank"
+  page.should have_content "Mot de passedoit être rempli(e)"
 end
 
 Then /^I should see a missing password confirmation message$/ do
-  page.should have_content "Passworddoesn't match confirmation"
+  page.should have_content "Mot de passene concorde pas avec la confirmation"
 end
 
 Then /^I should see a mismatched password message$/ do
-  page.should have_content "Passworddoesn't match confirmation"
+  page.should have_content "Mot de passene concorde pas avec la confirmation"
 end
 
 Then /^I should see a signed out message$/ do
-  page.should have_content "Signed out successfully."
+  page.should have_content "Déconnecté avec succès."
 end
 
 Then /^I see an invalid login message$/ do
-  page.should have_content "Invalid email or password."
+  page.should have_content "Email ou mot de passe incorrect."
 end
 
 Then /^I should see an account edited message$/ do
-  page.should have_content "You updated your account successfully."
+  page.should have_content "Votre compte a été modifié avec succès."
 end
 
 Then /^I should see my name$/ do

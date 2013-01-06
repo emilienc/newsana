@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require jquery.tokeninput
 //= require jquery_nested_form
 //= require bootstrap
 //= require highcharts

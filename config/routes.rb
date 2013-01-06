@@ -1,5 +1,15 @@
 Newsana::Application.routes.draw do  
 
+  get 'home/about', as: 'about'
+  get 'home/help', as: 'help'
+  get 'home/questions', as: 'questions'
+
+
+  resources :targets
+
+
+  get "aliments/index"
+
   resources :activites
 
 
@@ -11,7 +21,7 @@ scope "(:locale)", :locale => /en|fr/ do
 
   resources :ingredients
 
-  resources :repas
+  resources :repas 
 
   resources :pesees
 
@@ -28,6 +38,7 @@ scope "(:locale)", :locale => /en|fr/ do
   
   resources :users do
     resources :profiles
+    resources :targets
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
@@ -45,11 +46,11 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     @user = User.find(params[:user_id])
-    @user.build_profile(params[:id])
+    @user.build_profile(params[:profile])
 
     respond_to do |format|
       if @user.profile.save
-        format.html { redirect_to user_path(@user.id), notice: 'Profile was successfully created.' }
+        format.html { redirect_to user_path(@user.id), notice: 'Votre profil a bien été créé.' }
         format.json { render json: @user.profile, status: :created, location: @user.profile }
       else
         format.html { render action: "new" }
@@ -66,7 +67,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @user.profile.update_attributes(params[:profile])
-        format.html { redirect_to user_path(@user.id), notice: 'Profile was successfully updated.' }
+        format.html { redirect_to user_path(@user.id), notice: 'Votre profil a bien été modifié.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -82,7 +83,7 @@ class ProfilesController < ApplicationController
     @profile.destroy
 
     respond_to do |format|
-      format.html { redirect_to profiles_url }
+      format.html { redirect_to home_url }
       format.json { head :no_content }
     end
   end

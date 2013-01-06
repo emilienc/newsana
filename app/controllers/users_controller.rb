@@ -1,8 +1,16 @@
 class UsersController < ApplicationController
-  #before_filter :authenticate_user!
-  #load_and_authorize_resource :only => :index
+
 
   #Rails index method is provided by default
+
+  def about
+  end
+
+  def help
+  end
+
+  def questions
+  end
 
 
   def apport_calorique(repas)
@@ -11,7 +19,7 @@ class UsersController < ApplicationController
     repas.each do |r|
         @calrep += r.calories
     end
-    @calrep
+    @calrep.round
   end
 
 
@@ -24,6 +32,7 @@ class UsersController < ApplicationController
     end
     #on ajoute le metabolisme
     @calact += Doctor.metabolisme(user)
+    @calact.round
   end
 
   def edit
@@ -43,16 +52,18 @@ class UsersController < ApplicationController
     @calories_acquise = []
     @besoins = []
     @metabolismes = []
+    @objectifs = []
     @user = User.find(params[:id])
     
     unless @user.profile.nil? || @user.profile.uncomplete?
       (Date.today-7..Date.today).each do |quand|
         @repas = current_user.repas.find_all_by_quand(quand)
         @activites = current_user.activites.find_all_by_quand(quand)
-        @calories_depense << depense_calorique(@activites,@user).round
-        @calories_acquise << apport_calorique(@repas).round
-        @metabolismes << Doctor.metabolisme(@user).round
-        @besoins << Doctor.besoin_quotidien(@user).round
+        @calories_depense << depense_calorique(@activites,@user)
+        @calories_acquise << apport_calorique(@repas)
+        @metabolismes << Doctor.metabolisme(@user)
+        @besoins << Doctor.besoin_quotidien(@user)
+        @objectifs << Doctor.besoin_cible(@user)
       end
     end
   end

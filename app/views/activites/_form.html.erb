@@ -9,7 +9,7 @@
   <div class="form-inputs">
   	<%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.input :quand, label: "Date de l'activité" %>
-    <%= f.input :category_activite_id, :collection => CategoryActivite.all, label: "Type d'activité" %>
+    <%= f.input :category_activite_id, :collection => CategoryActivite.all, label: "Type d'activité", :selected => "4" %>
     <%= f.input :duree, label: "Durée de l'activité en minutes" %> 
   </div>
 

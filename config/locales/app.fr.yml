@@ -9,22 +9,28 @@ fr:
   surpoids: 'surpoids'
   normal: 'normal'
  nav:
+  help:
+   title: "Aide"
+   about: "A propos"
+   help: "Documentation"
+   question: "Question fréquentes"
   home: 'Dietbook'
   logout: 'Deconnexion'
   infos: 'Gerer mes infos'
   account: 'Gerer mon compte'
-  profil: 'Gerer mon profil'
+  profil: 'Voir mon profil'
   weight: 
    title: 'Gerer mon poids'
    add: 'Ajouter une pesée'
    see: 'Voir mes pesées'
+   target: 'Se fixer un objectif'
   food: 
    title: 'Gerer mon alimentation'
    add: 'Ajouter un repas'
    see: 'Voir mes repas'
   exercise: 
    title: 'Gerer mes activités'
-   add: 'Ajouter une actvité'
+   add: 'Ajouter une activité'
    see: 'Voir mes activités'
   connexion: 
    title: 'Connexion'

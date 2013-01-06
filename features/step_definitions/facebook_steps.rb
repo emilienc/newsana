@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 def set_facebook_omniauth (opts = {})
  
 OmniAuth.config.test_mode = true
@@ -36,10 +38,10 @@ end
 
 When /^I Sign in with Facebook$/ do
   set_facebook_omniauth
-  click_link 'Sign in with Facebook'
+  click_link 'Se connecter avec Facebook'
 end
 
 Then /^I should see a successful facebook sign up message$/ do
-  page.should have_content "Successfully authenticated from Facebook account."
+  page.should have_content "Autorisé avec succès par votre compte Facebook."
 end
 

@@ -20,9 +20,9 @@ CategoryActivite.create({ :name => 'vélo appartement', :MET=>7.0 })
 CategoryActivite.create({ :name => 'marche' , :MET=>4.0})
 CategoryActivite.create({ :name => 'course à pied', :MET=>7.0 })
 puts 'ALIMENT'
-filename = 'csvout_calories.csv'
-CSV.foreach(filename, headers: true) do |row|
-	puts row[0]
-	@unite = Unite.find_or_create_by_name(row[3])
-    Aliment.create!(name: row[0], calories: row[1], portion: row[2], unite_id: @unite.id  )
+@unite = Unite.create(name:'gramme')
+filename = 'ciqual.csv'
+CSV.foreach(filename, headers: true, :col_sep => ";") do |row|
+	puts row[3]
+    Aliment.create!(name: row[3], calories: row[20], portion: 100, unite_id: @unite.id  )
 end

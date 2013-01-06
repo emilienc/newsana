@@ -7,11 +7,6 @@ def delete_repas
   end 
 end
 
-def create_bad_repa
-  delete_repas
-  @repas = FactoryGirl.create(:repa_without_name)
-end
-
 
 def create_repa
   delete_repas
@@ -23,7 +18,8 @@ When /^I create a valid repas$/ do
 end
 
 When /^I create a bad repas$/ do
-  create_bad_repa
+ click_link "Ajouter un repas"
+ click_button "Créer"
 end
 
 Then /^I should see a successful repas create message$/ do
@@ -32,6 +28,5 @@ Then /^I should see a successful repas create message$/ do
 end
 
 Then /^I should not see a successful repas create message$/ do
-  click_link "Voir mes repas"
-  page.should have_no_content "dejeuner"
+  page.should have_content "Quelle quantité avez vous manger en grammes ?doit être rempli(e)"
 end

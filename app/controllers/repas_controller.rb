@@ -1,5 +1,7 @@
 # encoding: UTF-8
 class RepasController < ApplicationController
+
+
   # GET /repas
   # GET /repas.json
   def index
@@ -26,7 +28,7 @@ class RepasController < ApplicationController
   # GET /repas/new
   # GET /repas/new.json
   def new
-    @aliments = Aliment.all
+    @aliments = Aliment.order("name DESC").all
     @repa = Repa.new
     @ingredient = @repa.ingredients.build
 
@@ -38,7 +40,7 @@ class RepasController < ApplicationController
 
   # GET /repas/1/edit
   def edit
-    @aliments = Aliment.all
+    @aliments = Aliment.order("name DESC").all
     @repa = Repa.find(params[:id])
   end
 
@@ -49,7 +51,7 @@ class RepasController < ApplicationController
 
     respond_to do |format|
       if @repa.save
-        format.html { redirect_to @repa, notice: 'Repa was successfully created.' }
+        format.html { redirect_to repas_url, notice: 'Repa was successfully created.' }
         format.json { render json: @repa, status: :created, location: @repa }
       else
         format.html { render action: "new" }
@@ -74,7 +76,7 @@ class RepasController < ApplicationController
 
     respond_to do |format|
       if @result
-        format.html { redirect_to @repa, notice: @notice }
+        format.html { redirect_to repas_url, notice: @notice }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

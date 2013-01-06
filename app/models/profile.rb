@@ -6,4 +6,13 @@ class Profile < ActiveRecord::Base
   	(taille.nil? || birthday.nil? || gender.nil?) ? true : false
   end
 
+  def female?
+  	(gender == "femme") || (gender == "female")
+  end
+
+  def male?
+  	(gender == "homme") || (gender == "male")
+  end
+
+
 end

@@ -1,0 +1,28 @@
+
+<div class='row'>
+<h2>Objectif de poids de <%= @user.name %></h2>
+ <div class="span8 well">
+
+<%= simple_form_for([@user, @target], :html => { :class => 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+  <%= display_base_errors @target %>
+
+  <div class="form-inputs">
+
+  	 <%= f.input :duree, :as => :date, :start_year => Date.today.year,
+                             :end_year => Date.today.year + 12,
+                            :order => [:day,:month, :year], label: 'A quelle date souhaitez vous atteindre votre objectif' 
+
+      %>
+
+
+    <%= f.input :poids, label: 'Quel poids souhaitez vous avoir à cette date' %>
+  
+  </div>
+
+  <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+        <i class="icon-ok icon-white"></i> Enregistrer
+      <% end %>
+<% end %>
+</div>
+</div>

@@ -9,7 +9,7 @@ Feature: Create Repas
       When I create a valid repas
       Then I should see a successful repas create message
 
-	Scenario: User create a bad repas
+	  Scenario: User create a bad repas
       Given I am logged in
       When I create a bad repas
       Then I should not see a successful repas create message

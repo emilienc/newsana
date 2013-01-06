@@ -1,12 +1,16 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
-gem 'sqlite3'
 gem 'nested_form'
 gem 'nokogiri'
-
+gem 'rails3-jquery-autocomplete'
 gem 'rails-i18n'
 gem 'simple_calendar'
+gem 'jquery-tokeninput-rails'
+
+group :production do
+	gem 'pg'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,6 +39,7 @@ group :test do
  gem 'capybara'
  gem 'launchy'
  gem "cucumber-rails-training-wheels"
+ gem 'sqlite3'
 end
 
 group :test,:development do

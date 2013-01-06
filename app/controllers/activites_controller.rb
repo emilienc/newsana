@@ -30,7 +30,7 @@ def index
 
     respond_to do |format|
       if @activite.save
-        format.html { redirect_to activites_path, notice: 'Activite was successfully created.' }
+        format.html { redirect_to activites_path, notice: 'Votre activité a été enregistrée avec succés.' }
         format.json { render json: @activite, status: :created, location: @activite }
       else
         format.html { render action: "new" }
@@ -44,10 +44,10 @@ def index
     
     if params[:destroy]
        @result = @activite.destroy
-       @notice = 'Activite was successfully deleted.' 
+       @notice = 'Cette activité a bien été supprimé.' 
     else
        @result = @activite.update_attributes(params[:activite])
-       @notice = 'Activite was successfully updated.' 
+       @notice = 'Cette activité a bien été modifié.' 
     end
 
       respond_to do |format|
@@ -59,6 +59,16 @@ def index
           format.json { render json: @activite.errors, status: :unprocessable_entity }
         end
       end
+  end
+
+  def destroy
+    @activite = Activite.find(params[:id])
+    @activite.destroy
+
+    respond_to do |format|
+      format.html { redirect_to activites_path }
+      format.json { head :no_content }
+    end
   end
 
 end

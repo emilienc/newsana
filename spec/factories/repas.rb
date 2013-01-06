@@ -21,11 +21,6 @@ FactoryGirl.define do
   	aliment
   end
 
-  factory :repa_without_name, :class => Repa do
-    user_id 1
-    quand "2013-01-01"
-  end
-
   factory :repa do
     user_id 1
     quand "2013-01-01"

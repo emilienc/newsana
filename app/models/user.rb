@@ -1,9 +1,10 @@
 # encoding: UTF-8
 class User < ActiveRecord::Base
   has_one :profile, :dependent => :destroy
+  has_one :target, :dependent => :destroy
   has_many :pesees, :dependent => :destroy
   has_many :repas, :dependent => :destroy
-    has_many :activites, :dependent => :destroy
+  has_many :activites, :dependent => :destroy
  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -33,7 +34,18 @@ class User < ActiveRecord::Base
   end
   
   def image
-      profile.image_url unless profile.nil?
+     if profile.nil? 
+      return "img_hom.jpg"
+     end
+     if profile.image_url.nil?
+        if profile.female?
+          return "img_fem.jpg"
+        else
+          return "img_hom.jpg"
+        end
+     else
+      profile.image_url
+     end
   end
 
   def taille

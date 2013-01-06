@@ -2,27 +2,30 @@
 
 class Doctor
 
-	def self.female?(gender)
-		(gender == "female")
+	def self.formule_calories_poids_cible_duree(poids,cible,duree)
+		((poids-cible)*500.0)/duree
 	end
 
+
 	def self.formule_besoin_quotidien(metabolisme,comportement)
+		@besoin =0
 		case comportement
 		when "sédentaire"
-		 	metabolisme*1.2
+		 	@besoin=metabolisme*1.2
 		when "légèrement actif"
-			metabolisme*1.375
+			@besoin=metabolisme*1.375
 		when "modérément actif"
-			metabolisme*1.55
+			@besoin=metabolisme*1.55
 		when "très actif"
-			metabolisme*1.725
+			@besoin=metabolisme*1.725
 		when "très très actif"
-			metabolisme*1.9
+			@besoin=metabolisme*1.9
 		end
+		@besoin.round
 	end
 
 	def self.formule_poids_ideal(taille,gender)
-		if female?(gender)
+		if gender.female?
 			(taille - 100 - ((taille - 150) / 2.5))
 		else
 		    (taille - 100 - ((taille - 150) / 4.0))
@@ -30,17 +33,17 @@ class Doctor
 	end
 
 	def self.formule_metabolisme(taille,poids,age,gender)
-		if female?(gender)
+		if gender.female?
     		 #230*(poids**0.48*taille**0.5*age**-0.13) 
-    		 (9.56*poids) + (1.85*taille) - (4.68*age) + 655
+    		 ((9.56*poids) + (1.85*taille) - (4.68*age) + 655).round
     	else
     		 #259*(poids**0.48*taille**0.5*age**-0.13)
-    		 (13.75*poids) + (5*taille) - (6.76*age) + 66
+    		 ((13.75*poids) + (5*taille) - (6.76*age) + 66).round
     	end
 	end
 
 	def self.formule_img(imc,age,gender)
-		if female?(gender)
+		if gender.female?
 			(1.2*imc)+(0.23*age)-10.8*0-5.4
 		else
 			(1.2*imc)+(0.23*age)-10.8*1-5.4
@@ -55,11 +58,11 @@ class Doctor
 
 
 	def self.poids_ideal(user)
-		formule_poids_ideal(user.taille,user.profile.gender) 
+		formule_poids_ideal(user.taille,user.profile) 
 	end
 
 	def self.metabolisme(user)
-		formule_metabolisme(user.taille,user.poids,user.age,user.profile.gender).round	
+		formule_metabolisme(user.taille,user.poids,user.age,user.profile).round	
 	end
 
 	def self.imc(user)
@@ -71,7 +74,15 @@ class Doctor
 	end
 
 	def self.img(user)
-		formule_img(formule_imc(user.poids,user.taille),user.age,user.profile.gender).round(1) 
+		formule_img(formule_imc(user.poids,user.taille),user.age,user.profile).round(1) 
+	end
+
+	def self.besoin_cible(user)
+		@besoin=0
+		unless user.poids.nil? ||  user.target.nil?
+			@besoin=formule_besoin_quotidien(metabolisme(user),user.profile.comportement)-formule_calories_poids_cible_duree(user.poids,user.target.poids,user.target.duree-Date.today)
+		end
+		@besoin.round
 	end
 
 	def self.label_img(user)
@@ -79,9 +90,9 @@ class Doctor
     		when 0..15
       			"label-important"
     		when 15..20
-      			female?(user.profile.gender) ? "label-warning" : "label-success"
+      			user.profile.female? ? "label-warning" : "label-success"
     		when 25..30
-      			female?(user.profile.gender) ? "label-success" : "label-warning"
+      			user.profile.female? ? "label-success" : "label-warning"
     		else
       			"label-important"
     	end
@@ -94,9 +105,9 @@ class Doctor
     		when 0..15
       			"trop maigre"
     		when 15..20
-      			female?(user.profile.gender) ? "trop maigre" : "normal"
+      			user.profile.female? ? "trop maigre" : "normal"
     		when 25..30
-      			female?(user.profile.gender) ? "normal" : "trop de graisse"
+      			user.profile.female? ? "normal" : "trop de graisse"
     		else
       			"trop de graisse"
     	end

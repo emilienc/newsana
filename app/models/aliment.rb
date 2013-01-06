@@ -3,8 +3,8 @@ class Aliment < ActiveRecord::Base
   validates_presence_of :calories, :name, :portion
   belongs_to :unite
 
-  def full_name
-  	[name,'portion de',portion.to_s,unite.name].join(' ')
-  end
+  #def full_name
+  #	[name,'portion de',portion.to_s,unite.name].join(' ')
+  #end
 
 end

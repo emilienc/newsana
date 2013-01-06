@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @target.user_id %>
+</p>
+
+<p>
+  <b>Poids:</b>
+  <%= @target.poids %>
+</p>
+
+<p>
+  <b>Duree:</b>
+  <%= @target.duree %>
+</p>
+
+
+<%= link_to 'Edit', edit_target_path(@target) %> |
+<%= link_to 'Back', targets_path %>
