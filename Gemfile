@@ -3,10 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.9'
 gem 'nested_form'
 gem 'nokogiri'
-gem 'rails3-jquery-autocomplete'
 gem 'rails-i18n'
 gem 'simple_calendar'
-gem 'jquery-tokeninput-rails'
 gem 'figaro'
 
 group :production do
