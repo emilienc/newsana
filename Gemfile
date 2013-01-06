@@ -23,13 +23,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
 gem 'devise'
 gem 'activeadmin'
 gem 'meta_search'
-
 gem 'simple_form'
-
 gem 'omniauth'
 gem 'omniauth-facebook'
 

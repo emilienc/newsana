@@ -12,7 +12,7 @@ require 'rails/all'
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 puts 'ADMIN USER'
-user = User.find_or_create_by_email :admin => true,:name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
+user = User.find_or_create_by_email :admin => true,:name => "Admin", :email => "admin@example.com", :password => "password", :password_confirmation => "password"
 puts 'CATEGORY_ACTIVITE'
 CategoryActivite.create({ :name => 'vélo loisir', :MET=>4.5 })
 CategoryActivite.create({ :name => 'vélo course', :MET=>10.0 })
