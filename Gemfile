@@ -7,6 +7,7 @@ gem 'rails3-jquery-autocomplete'
 gem 'rails-i18n'
 gem 'simple_calendar'
 gem 'jquery-tokeninput-rails'
+gem 'figaro'
 
 group :production do
 	gem 'pg'
@@ -28,7 +29,7 @@ gem 'activeadmin'
 gem 'meta_search'
 
 gem 'simple_form'
-gem 'figaro'
+
 gem 'omniauth'
 gem 'omniauth-facebook'
 
