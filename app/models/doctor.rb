@@ -24,7 +24,23 @@ class Doctor
 		@besoin.round
 	end
 
+
+	def self.formule_creff(taille,age,morphologie)
+		if morphologie.nil?
+			morphologie = "normal"
+		end
+		case morphologie
+		when "normal"
+			(taille - 100 + age/10)*0.9
+		when "fine"
+			(taille - 100 + age/10)*0.9*0.9
+		when "large"
+			(taille - 100 + age/10)*0.9*1.1
+		end
+	end
+
 	def self.formule_poids_ideal(taille,gender)
+
 		if gender.female?
 			(taille - 100 - ((taille - 150) / 2.5))
 		else
@@ -58,7 +74,8 @@ class Doctor
 
 
 	def self.poids_ideal(user)
-		formule_poids_ideal(user.taille,user.profile) 
+		#formule_poids_ideal(user.taille,user.profile) 
+		self.formule_creff(user.taille,user.age,user.profile.morphologie).round
 	end
 
 	def self.metabolisme(user)

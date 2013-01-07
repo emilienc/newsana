@@ -35,16 +35,9 @@ class User < ActiveRecord::Base
   
   def image
      if profile.nil? 
-      return "img_hom.jpg"
-     end
-     if profile.image_url.nil?
-        if profile.female?
-          return "img_fem.jpg"
-        else
-          return "img_hom.jpg"
-        end
+       nil
      else
-      profile.image_url
+       profile.image_url
      end
   end
 

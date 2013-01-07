@@ -16,6 +16,7 @@
 
       <%= f.input :taille, label: 'taille en cm' %>
       <%= f.input :gender, label: 'sexe', :collection => [:homme, :femme] %>
+      <%= f.input :morphologie, label: "Décrivez votre morphologie",:collection => [:fine, :normal, :large] %> 
       <div class="row">
       	<div class="span3">
       		<%= f.input :comportement, label: "Décrivez votre niveau d'activité physique"  , :collection => ["sédentaire", "légèrement actif","modérément actif","très actif","très très actif"] %>
