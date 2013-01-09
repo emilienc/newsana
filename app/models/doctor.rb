@@ -75,7 +75,7 @@ class Doctor
 
 	def self.poids_ideal(user)
 		#formule_poids_ideal(user.taille,user.profile) 
-		self.formule_creff(user.taille,user.age,user.profile.morphologie).round
+		self.formule_creff(user.taille,user.age,user.profile.morphologie).round(1)
 	end
 
 	def self.metabolisme(user)

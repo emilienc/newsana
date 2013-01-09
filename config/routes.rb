@@ -5,6 +5,7 @@ Newsana::Application.routes.draw do
   get 'home/questions', as: 'questions'
 
 
+
   resources :targets
 
 

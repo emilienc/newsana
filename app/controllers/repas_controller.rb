@@ -28,7 +28,7 @@ class RepasController < ApplicationController
   # GET /repas/new
   # GET /repas/new.json
   def new
-    @aliments = Aliment.order("name DESC").all
+    @aliments = Aliment.order("name ASC").all
     @repa = Repa.new
     @ingredient = @repa.ingredients.build
 
@@ -40,7 +40,7 @@ class RepasController < ApplicationController
 
   # GET /repas/1/edit
   def edit
-    @aliments = Aliment.order("name DESC").all
+    @aliments = Aliment.order("name ASC").all
     @repa = Repa.find(params[:id])
   end
 
