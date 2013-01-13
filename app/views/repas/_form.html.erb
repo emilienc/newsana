@@ -1,46 +1,55 @@
 <div class='row'>
-
       <div class="span8 well">
+        <%= nested_form_for @repa do |f| %>
+        
 
+        <%= errors_for(@repa).html_safe %>
 
-<%= simple_nested_form_for(@repa) do |f| %>
-  <%= f.error_notification %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        
+        <%= f.label :quand, 'Date du repas' %>
+        <%= f.date_select :quand %>
 
-  <div class="form-inputs">
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.input :quand, label: 'Date du repas' %>
-    <%= f.input :name,label: 'Type de repas', :collection => ['petit dejeuner', 'dejeuner', 'collation', 'diner'] %>
-    <%= f.simple_fields_for :ingredients do |ff| %>
+        <%= f.label :name, 'Type de repas' %>
+        <%= f.select :name, ['petit dejeuner', 'dejeuner', 'collation', 'diner'] %>
+
+        <%= f.fields_for :ingredients do |ff| %>
+         
+
+         <%= ff.label :aliment_id, 'Selectionner un aliment' %>
+
+         <div class="input-append">
+         <%= ff.collection_select :aliment_id, Aliment.order("name ASC").all, :id, :name %>
+         <%= ff.link_to_remove "Supprimer", class: "btn btn-danger" %>
+         </div>
+
+         <%= ff.label :quantite, 'Quelle quantité avez vous manger en grammes ?' %>
+
       
-     
-      <%= ff.input :aliment_id, :collection => @aliments, :required => true, :autofocus => true, :label => 'Selectionner un aliment', :label_method=>:name%>
-  
-      <div class = 'row'>
-         <div class="span5">
-            <%= ff.input :quantite, label: 'Quelle quantité avez vous manger en grammes ? ' %>
+         <div class="input-append">
+          <%= ff.text_field :quantite%>
+          <button class="btn btn-primary" href="#test_modal" data-toggle="modal"><i class="icon-white icon-question-sign"></i></button>
          </div>
-         <div class="span3">
-            <%= ff.link_to_remove "Supprimer cet aliment", class: "btn btn-danger" %>
-         </div>
-    </div>
-    <%end%>
-   <p><%= f.link_to_add "Ajouter un aliment au repas", :ingredients, class: "btn btn-success" %></p>
-  </div>
-
-<div class="form-actions">  
-    <%if delete %>
-      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-        <i class="icon-ok icon-white"></i> Modifier
-      <% end %>
-      <%= button_tag(type: 'submit', class: "btn btn-primary btn-danger", :name=>'destroy') do %>
-        <i class="icon-trash icon-white"></i> Supprimer
-      <% end %>
-    <%else%> 
-        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-        <i class="icon-ok icon-white"></i> Créer
+         <br/>
         <%end%>
-    <%end%>
-  </div>
-<%end%>
-</div>
+         <%= render "modal_equivalences" %>
+        
+        <p><%= f.link_to_add "Ajouter un aliment au repas", :ingredients, class: "btn btn-primary" %></p>
+
+        <div class="form-actions">  
+          <%if delete %>
+              <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+                <i class="icon-ok icon-white"></i> Modifier
+              <% end %>
+              <%= button_tag(type: 'submit', class: "btn btn-danger", :name=>'destroy') do %>
+                <i class="icon-trash icon-white"></i> Supprimer
+              <%end%>
+          <%else%> 
+              <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+                <i class="icon-ok icon-white"></i> Créer
+              <%end%>
+          <%end%>
+        </div>
+        <%end%>
+      </div>
 </div>

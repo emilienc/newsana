@@ -28,10 +28,9 @@ class RepasController < ApplicationController
   # GET /repas/new
   # GET /repas/new.json
   def new
-    @aliments = Aliment.order("name ASC").all
+    #@aliments = Aliment.order("name ASC").all
     @repa = Repa.new
     @ingredient = @repa.ingredients.build
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @repa }
@@ -40,7 +39,7 @@ class RepasController < ApplicationController
 
   # GET /repas/1/edit
   def edit
-    @aliments = Aliment.order("name ASC").all
+    #@aliments = Aliment.order("name ASC").all
     @repa = Repa.find(params[:id])
   end
 

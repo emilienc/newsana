@@ -16,14 +16,14 @@
 
  <div class="form-actions">  
     <%if delete %>
-      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+      <%= button_tag(type: 'submit', class: "btn btn-success") do %>
         <i class="icon-ok icon-white"></i> Modifier
       <% end %>
       <%= button_tag(type: 'submit', class: "btn btn-primary btn-danger", :name=>'destroy') do %>
         <i class="icon-trash icon-white"></i> Supprimer
       <% end %>
     <%else%> 
-        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+        <%= button_tag(type: 'submit', class: "btn btn-success") do %>
         <i class="icon-ok icon-white"></i> Créer
         <%end%>
     <%end%>
