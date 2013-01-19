@@ -3,7 +3,7 @@ server "ssh.alwaysdata.com", :web, :app, :db, primary: true
 set :user, "dietbook_emilien"
 set :application_folder, "dietbook"
 set :git_repository, "dietbook"
-set :deploy_to, "/home/#{user}/#{application_folder}"
+set :deploy_to, "#{application_folder}"
 set :rails_env, "production"
 set :deploy_via, :remote_cache
 set :use_sudo, false
