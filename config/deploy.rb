@@ -1,5 +1,5 @@
-set :bundle_cmd, '/home/dietbook/gems/bin/bundle'
-require 'bundler/capistrano'
+#set :bundle_cmd, '/home/dietbook/gems/bin/bundle'
+#require 'bundler/capistrano'
 
 server "ssh.alwaysdata.com", :web, :app, :db, primary: true
 
