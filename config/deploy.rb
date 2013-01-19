@@ -11,6 +11,7 @@ set :use_sudo, false
 set :scm, "git"
 set :repository, "git@github.com:emilienc/newsana.git"
 set :branch, "master"
+set :scm_passphrase, "clealizee"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
