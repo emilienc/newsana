@@ -1,3 +1,4 @@
+set :bundle_cmd, '/home/dietbook/gems/bin/bundle'
 require 'bundler/capistrano'
 
 server "ssh.alwaysdata.com", :web, :app, :db, primary: true
@@ -18,7 +19,7 @@ set :branch, "master"
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
-set :keep_releases, 4
+set :keep_releases, 1
 set :git_enable_submodules, 1
 
 after "deploy", "deploy:cleanup"
