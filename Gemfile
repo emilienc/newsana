@@ -64,6 +64,7 @@ end
 gem 'capistrano'
 gem 'execjs'
 gem 'therubyracer','0.11.3'
+gem 'rake','10.0.3' 
 
 # To use debugger
 # gem 'debugger'
