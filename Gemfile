@@ -63,7 +63,7 @@ end
 # Deploy with Capistrano
 gem 'capistrano'
 gem 'execjs'
-gem 'therubyracer'
+gem 'therubyracer','0.11.3'
 
 # To use debugger
 # gem 'debugger'
