@@ -14,7 +14,7 @@ fr:
    about: "A propos"
    help: "Documentation"
    question: "Question fréquentes"
-  home: 'Dietbook'
+  home: 'Calorilight'
   logout: 'Deconnexion'
   infos: 'Gerer mes infos'
   account: 'Gerer mon compte'
@@ -38,6 +38,6 @@ fr:
    login: 'Se connecter'
    signup: 'Créer un compte'
  home:
-  welcome: "Bienvenue sur le site qui maintient en forme"
+  welcome: "Bienvenue sur le site qui permet de garder la forme"
   description: "Vous voulez suivre votre poids, votre alimentation et vos activites pour rester en forme en relation avec vos amis , rejoignez nous c'est gratuit"
   signup: 'Rejoignez nous!'

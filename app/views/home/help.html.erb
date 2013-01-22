@@ -1,4 +1,4 @@
-
+<% provide(:title, t('nav.help.help')) %>
 
 <h1>Comment utiliser ce site</h1>
 
@@ -14,10 +14,10 @@ Vous pouvez vous authentifier et vous inscrire soit automatiquement avec votre c
 L'avantage d'utiliser votre compte facebook et que vos informations de profil seront récupérées depuis facebook et que vous n'aurez pas à les entrer à nouveau
 Avec facebook vous verrez aussi votre photo sur le dashboard</blockquote></p>
 
-Dashboard
-<p><blockquote>C'est votre page de resultat, vous pouvez y voir l'ensemble des données qui vous concerne et suivre en pgraphes l'evolution dans le temps de votre poids et de votre consommation de calories.
-Pour que votre dashboard soit pertinent il faut que votre profil soit complet et que vous ayez indiqué au moins une pesée
-L'accès au dashboard peut se faire à tout moment en cliquant sur Dietbook
+Tableau de bord
+<p><blockquote>C'est votre page de resultat, vous pouvez y voir l'ensemble des données qui vous concerne et suivre en graphes l'evolution dans le temps de votre poids et de votre consommation de calories.
+Pour que votre tableau soit pertinent il faut que votre profil soit complet et que vous ayez indiqué au moins une pesée
+L'accès au tableau de bord peut se faire à tout moment en cliquant sur Calorilight
 </blockquote></p>
 
 Gestion des informations de profil
@@ -35,8 +35,12 @@ Pour cela allez dans Gerer mon poids/Ajouter une pesée
 Entrez simplement votre poids si vous venez de vous peser, modifier la date si la pesée a eu lieu un autre jour
 
 Comprendre les infos de poids
-	Qu'est-ce que l'IMC
-	Qu'est ce que l'IMG
+	Qu'est-ce que l'Indice de Masse Corporelle ?
+	Qu'est ce que l'Indice de Masse Graisseuse ?
+	Comment est calculé mon poids idéal ?
+	Qu'est ce que mon métabolisme de base ?
+	Qu'est ce que mon besoin théorique ?
+	Qu'est ce que mon besoin pour objectif ?
 	...
 </blockquote></p>
 
@@ -45,21 +49,85 @@ Suivre ses apports caloriques
 <p><blockquote>Pour suivre vos apports caloriques vous pouvez indiquer ce que vous avez mangé
 Pour cela allez dans Gerer mon alimentation/Ajouter un repas
 Vous trouverez ci-dessous les principales équivalences en grammes des produits courants :</br>
-	1 tranche de pain de mie = 20g </br>
-	1 cafe espresso non sucré = 8g </br>
-	1 banane = 100g </br>
-</blockquote></p>
+</blockquote>
+
+<table class="table table-striped">
+                    <tr>
+                        <th>Litre (l.)</th>
+                        <th>Centilitre (cl.)</th>
+                        <th>Décilitre (dl.)</th>
+                        <th>Gramme (g.)</th>
+                    </tr>
+                    <tr>
+                         <td>1 litre</td>
+                         <td>100 cl.</td>
+                         <td>10 dl.</td>
+                         <td>1000g. (Eau)</td>
+                     </tr>
+                     <tr>
+                        <td>1/2 litre</td>
+                        <td>50 cl.</td>
+                        <td>5 dl.</td>
+                        <td>500 g. (Eau)</td>
+                    </tr>
+                    <tr>
+                        <td>1/4 litre </td>  <td>25 cl.</td>  <td>2,5 dl. </td>    <td>250 g. (Eau)</td>
+                    </tr>
+                    <tr>
+                        <td>1/8 litre </td>  <td>12,5 cl.</td> <td>1,25 dl.</td>   <td>125 g. (Eau)</td>
+                    </tr>
+                </table>
+            </br>
+
+            <table class="table table-striped"><tbody><tr>
+                <th>Contenants</th>
+                <th>Grammages</th>
+                </tr>
+                    <tr class="l1"><td>1 grand bol</td>
+                    <td>350 grammes</td></tr>
+                    <tr class="l2"><td>1 assiette à soupe</td>
+                    <td>de 250 à 300 grammes</td></tr>
+                    <tr class="l1"><td>1 tasse à petit-déjeuner</td>
+                    <td>de 200 à 250 grammes</td></tr>
+                    <tr class="l2"><td>1 tasse à thé</td>
+                    <td>de 120 à 150 grammes</td></tr>
+                    <tr class="l1"><td>1 tasse à café</td>
+                    <td>100 grammes</td></tr>
+                    <tr class="l2"><td>1 verre à eau</td>
+                    <td>de 200 à 225 grammes</td></tr>
+                    <tr class="l1"><td>1 verre à vin</td>
+                    <td>de 90 à 100 grammes</td></tr>
+                    <tr class="l2"><td>1 cuillère à soupe</td>
+                    <td>15 grammes</td></tr>
+                    <tr class="l1"><td>1 cuillère à entremet</td>
+                    <td>10 grammes</td></tr>
+                    <tr class="l2"><td>1 cuillère à café</td>
+                    <td>5 grammes</td></tr>
+                    <tr class="l1"><td>1 verre à liqueur</td>
+                    <td>30 grammes</td></tr></tbody>
+                </table>
+                <br>
+
+<blockquote>Vous pouvez retrouver ces principales équivalences en cliquant sur le bouton ? dans le formulaire d'ajout d'un repas</br>
+</blockquote>
+
+</p>
 
 Suivre son activite physique
-<p><blockquote>
+<p><blockquote> Vous pouvez suivre les dépenses caloriques de vos activités physiques
+Pour cela allez dans Gerer mes actvités/Ajouter une activité
 </blockquote></p>
 
 Se fixer un objectif de poids
 <p><blockquote>
+	Si vous souhaitez connaitre le nombre de calories dont vous disposez si vous souhaitez atteindre un poids particulier à une date prochaine, allez dans Gerer mon poids/Se fixer un objectif
+	Vous pouvez alors suivre les calories dont vous disposez sur votre tableau de bord
 </blockquote></p>
 
 Comprendre le graphique
-<p><blockquote>
+<p><blockquote> Le graphique vous affiche les courbes des apports et des dépenses caloriques ainsi que les
+	seuils nécessaires pour votre metabolisme et pour atteindre votre objectif
+	en cliquant dans le graphe sur la legende vous pouvez afficher ou masquer des courbes
 </blockquote></p>
 </div>
 </div>

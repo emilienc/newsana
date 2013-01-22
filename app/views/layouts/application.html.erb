@@ -2,13 +2,24 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dietbook</title>
-    <meta name="description" content="Dietbook: Le site qui maintient en forme">
+    <title>Calorilight Le site qui permet de garder la forme | <%= yield(:title) %></title>
+    <meta name="description" content="Calorilight: Le site qui maintient en forme">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
     <%= yield(:head) %>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-37822657-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
     <%= render 'layouts/header' %>
