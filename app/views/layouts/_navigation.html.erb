@@ -3,11 +3,16 @@
 
 <ul class="nav">
   <% if user_signed_in? %>
-    
+
+ 
     <li class = "dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=raw("<i class='icon-large icon-user'></i> #{t('nav.infos')}")%><b class="caret"></b></a>  
          <ul class="dropdown-menu">  
+           <% unless current_user.guest? %>
            <li><%= link_to t('nav.account'), edit_user_registration_path %></li>
+           <%else%>
+           <li><%= link_to "Devenir Membre", new_member_path %></li>
+           <%end%>
            <li class="divider"></li>  
             <% if current_user.profile.nil? %>
                 <li><%= link_to t('nav.profil'), new_user_profile_path(current_user.id) %></li>
@@ -53,8 +58,11 @@
          </ul>  
    </li>
 
-
+    <% unless current_user.guest? %>
     <li><%= link_to raw("<i class='icon-large icon-off'></i> #{t('nav.logout')}"), destroy_user_session_path, :method=>'delete' %></li>
+    <%else%>
+    <li><%= link_to "Devenir Membre", new_member_path %></li>
+  <%end%>
   <% else %>
   <li class = "dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=raw("<i class='icon-large icon-play'></i> #{t('nav.connexion.title')}")%><b class="caret"></b></a>  

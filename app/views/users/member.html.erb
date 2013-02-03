@@ -1,0 +1,28 @@
+<div class="container">
+<div class='row'>
+      
+
+
+      <div class="span6 well">
+<h2>Modification des informations du compte <%= current_user.name %></h2>
+<%= simple_form_for(current_user, :url => registration_path(current_user), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+  <%= display_base_errors current_user %>
+  
+  <%= f.input :name, :autofocus => true, label: t('user.nom') %>
+  <%= f.input :email, :required => true, label: t('user.email') %>
+  <%= f.input :password, label: t('user.password'), :autocomplete => "off", :required => false %>
+  <%= f.input :password_confirmation,label: t('user.password_confirmation'), :required => false %>
+  
+  
+  <%= f.hidden_field :current_password,:value => "password" %>
+
+  
+
+ <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+        <i class="icon-ok icon-white"></i> Modifier
+      <% end %>
+<% end %>
+</div>
+</div>
+</div>

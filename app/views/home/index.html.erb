@@ -1,11 +1,37 @@
 <% provide(:title, t('nav.home')) %>
-<div class="center hero-unit">
-	<h1><%= t 'home.welcome' %></h1>
-  <h2>
-  	<%= t 'home.description' %>
-  </h2>
 
-  <%= link_to t('home.signup'), new_user_registration_path, class: "btn btn-large btn-primary" %>
+<div class="jumbotron">
+ <div class="container">
+		<div class="center hero-unit">
+			<h1><%= t 'home.welcome' %></h1>
+			<h2>
+			  	<%= t 'home.description' %>
+			</h2>
+  			<%= link_to t('home.signup'), new_user_registration_path, class: "btn btn-large btn-success" %>
+		</div>
+	</div>
 </div>
+<div class="container">
+    <div class="teasers">
+      <div class="teaser">
+        <%=image_tag("whiteboard.jpg", class: "teaser-illustration", height: 100, width: 225   )%>
+        <h3>Disposez des meilleurs informations.</h3>
+        <p>Visualisez en graphes l'impact de votre alimentation et de vos activités physiques sur sur votre poids.</p>
+      </div>
+      <div class="teaser">
+         <%=image_tag("success.jpg", class: "teaser-illustration", height: 100, width: 225   )%>
+        <h3>Atteignez vos objectifs.</h3>
+        <p>Fixez vous un objectif pour vous sentir mieux et suivez vos progrès au quotidien.Profitez gratuitement de tous les conseils et informations necessaires pour réussir</p>
+      </div>
+      <div class="teaser">
+         <%=image_tag("teamwork.jpg", class: "teaser-illustration", height: 100, width: 225   )%>
+        <h3>Partagez vos succès.</h3>
+        <p>Publiez vos résultats, encouragez vos amis, c'est tellement plus simple de réussir quand on est plusieurs .</p>
+      </div>
+    </div>
+     <p class="plans-pricing-callout">
+      <span class="mega-icon mega-icon-private-repo"></span>
+      <%= link_to "Decouvrez toutes les fonctionnalités avec notre utilisateur anonyme!", users_path, method: :post %>.
+    </p>
+  </div><!-- /.container -->
 
-<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>

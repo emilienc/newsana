@@ -1,5 +1,13 @@
 # encoding: UTF-8
 class User < ActiveRecord::Base
+
+
+  validates_presence_of :password, :email, unless: :guest?
+  validates_uniqueness_of :email, allow_blank: true
+  validates_confirmation_of :password
+
+
+
   has_one :profile, :dependent => :destroy
   has_one :target, :dependent => :destroy
   has_many :pesees, :dependent => :destroy
@@ -10,13 +18,19 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :omniauthable #:validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :admin
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :profile_attributes, :provider, :uid
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :profile_attributes, :provider, :uid, :guest
   # attr_accessible :title, :body
   accepts_nested_attributes_for :profile, :pesees, :repas
+
+
+
+  def self.new_guest
+    new { |u| u.guest = true }
+  end
 
   def poids
     @poids = 0

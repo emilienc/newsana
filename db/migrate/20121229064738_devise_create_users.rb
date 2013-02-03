@@ -20,6 +20,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :last_sign_in_ip
 
       t.boolean :admin
+      t.boolean :guest, :default => false
+      t.string  :name
 
       ## Confirmable
       # t.string   :confirmation_token

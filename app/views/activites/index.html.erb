@@ -1,6 +1,8 @@
+ <div class="container">
 <h1>Activites de <%=current_user.name%></h1>
 
 
 <%= calendar @activites do |activite| %>
   <div><%= link_to activite.event_name, edit_activite_path(activite) %></div>
 <% end %>
+</div>

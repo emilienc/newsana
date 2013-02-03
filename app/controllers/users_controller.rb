@@ -3,14 +3,20 @@ class UsersController < ApplicationController
 
   #Rails index method is provided by default
 
-  def about
+
+  def member
+    current_user.guest = false
   end
 
-  def help
-  end
 
-  def questions
-  end
+  #def about
+  #end
+
+  #def help
+  #end
+
+  #def questions
+  #end
 
 
   def apport_calorique(repas)
@@ -71,7 +77,9 @@ class UsersController < ApplicationController
   def update
   #  authorize! :update, @user, :message => 'Not authorized as an administrator.'
     @user = User.find(params[:id])
+   
     if @user.update_attributes(params[:user])
+      @user.guest = false
       redirect_to users_path, :notice => "User updated."
     else
       redirect_to users_path, :alert => "Unable to update user."

@@ -22,20 +22,16 @@
     </script>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
-    <%= render 'layouts/header' %>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
-            </div>
-          </div>
-         <%= render 'layouts/footer' %>
-        </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+    <div id="wrapper">      
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/messages' %> 
+      <div class="home site">
+            <%= yield %>
+      </div>
+      <div id="footer-push"></div><!-- hack for sticky footer -->
+    </div><!-- end of wrapper - hack for sticky footer -->
+     
+      <%= render 'layouts/footer' %>
   </body>
 </html>
 

@@ -1,8 +1,10 @@
+ <div class="container">
 <h1>Repas de <%=current_user.name%></h1>
 
 
 <%= calendar @repas do |repa| %>
   <div><%= link_to repa.event_name, edit_repa_path(repa) %></div>
 <% end %>
+</div>
 
 

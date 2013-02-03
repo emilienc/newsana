@@ -1,6 +1,10 @@
+ <div class="container">
+
 <h1>Pesées de <%=current_user.name%></h1>
 
 
 <%= calendar @pesees do |pesee| %>
   <div><%= link_to pesee.event_name, edit_pesee_path(pesee) %></div>
 <% end %>
+
+</div>

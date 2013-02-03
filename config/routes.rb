@@ -4,7 +4,7 @@ Newsana::Application.routes.draw do
   get 'home/help', as: 'help'
   get 'home/questions', as: 'questions'
 
-
+  get 'users/member', as: 'new_member'
 
   resources :targets
 

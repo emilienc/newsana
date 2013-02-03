@@ -1,7 +1,8 @@
-
+ <div class="container">
 <div class='row'>
-  <h2>Informations du profil de <%= @user.name %></h2>
+  
   <div class="span8 well">
+    <h2>Informations du profil de <%= @user.name %></h2>
       <%= simple_form_for([@user, @profile], :html => { :class => 'form-vertical' }) do |f| %>
           <%= f.error_notification %>
           <%= display_base_errors @profile %>
@@ -32,4 +33,5 @@
         <% end %>
       <%end%>
   </div>
+</div>
 </div>
